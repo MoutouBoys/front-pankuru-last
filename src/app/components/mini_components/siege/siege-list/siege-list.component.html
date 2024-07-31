@@ -1,0 +1,89 @@
+<div class="body_page">
+    <div class="table-container">
+      <div style="display: flex;">
+        <div class="ajout_btn">
+          <img [ngSrc]="ajouterImage" alt="ajouer" width="20" height="20">
+          <h6><a href="" routerLink="/formulaireSiege"> Ajouter Siege</a></h6>
+        </div>
+          <select name="" id="">
+            <optgroup>
+              <option value="Tous">Tous</option>
+              <option value="Tous">Pilotes</option>
+              <option value="Tous">Escortes</option>
+              <option value="Tous">Service de nettoyage</option>
+            </optgroup>
+          </select>
+          <input type="date">
+      </div>
+        <div class="table-scroll">
+            <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Numéro</th>
+                    <th>Disponibilité</th>
+                    <th>Position Siege</th>
+                    <th>Passager</th>
+                    <th>Supprimer</th>
+                    <th>Madifier</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let siege of sieges">
+                    <td>
+                      {{siege.id}}
+                    </td>
+                    <td>{{siege.numero}}</td>
+                    <td>{{siege.disponibilite}}</td>
+                    <td>{{siege.positionSiege}}</td>
+                    <td>{{siege.passager}}</td>
+                    <td>
+                      <button (click)="supprimer(siege.id)">
+                        <i class="fa-solid fa-trash btn_action_two"></i>
+                      </button>
+                    </td>
+                    <td>
+                      <button (click)="openModal(siege)">
+                        <i class="fa-solid fa-pen btn_action_one"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for editing -->
+<div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Modifier Avion</h2>
+      <br>
+      <form (ngSubmit)="onSubmit()" class="form_content">
+        <div>
+          <label for="numero">Numero:</label>
+          <br>
+          <input type="text" id="numero" [(ngModel)]="selectedSiege.numero" name="numero">
+        </div>
+        <div>
+          <label for="disponibilite">Disponibilite</label>
+          <br>
+          <input type="text" id="disponibilite" [(ngModel)]="selectedSiege.disponibilite" name="disponibilite">
+        </div>
+        <div>
+          <label for="positionSiege">PositionSiege:</label>
+          <br>
+          <input type="text" id="positionSiege" [(ngModel)]="selectedSiege.positionSiege" name="positionSiege">
+        </div>
+        <div>
+          <label for="passager">Passager:</label>
+          <br>
+          <input type="text" id="passager" [(ngModel)]="selectedSiege.passager" name="passager">
+        </div>
+        <br>
+        <button type="submit">Enregistrer</button>
+      </form>
+    </div>
+</div>
+  

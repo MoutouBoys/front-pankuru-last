@@ -1,0 +1,14 @@
+.body_page{
+    width: 76%;
+    height: 93.5%;
+    background-color: rgb(172, 243, 255);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: scroll;
+}
+.body_page::-webkit-scrollbar{
+    display: none;
+}
+.content_all{
+    display: flex;
+}

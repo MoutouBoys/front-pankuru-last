@@ -1,0 +1,13 @@
+.two-conteneur{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+position: relative;
+overflow: hidden;
+}
+
+/* @media (max-width: 900px){
+    .two-conteneur{
+        padding: 20px;
+    }
+} */

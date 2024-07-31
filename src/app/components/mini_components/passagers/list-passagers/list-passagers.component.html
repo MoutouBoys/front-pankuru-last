@@ -1,0 +1,115 @@
+<div class="body_page">
+    <div class="table-container">
+      <div style="display: flex;">
+        <div class="ajout_btn">
+          <img [ngSrc]="ajouterImage" alt="ajouer" width="20" height="20">
+          <a routerLink="/formulairePassager"> Ajouter Passager</a>
+        </div>
+          <select name="" id="">
+            <optgroup>
+              <option value="Tous">Tous</option>
+              <option value="Tous">Pilotes</option>
+              <option value="Tous">Escortes</option>
+              <option value="Tous">Service de nettoyage</option>
+            </optgroup>
+          </select>
+          <input type="date">
+      </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <!-- <th>ID</th> -->
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>NumeroDePasseport</th>
+                <th>NumeroDeVisa</th>
+                <!-- <th>Siege</th>
+                <th>Reservation</th>
+                <th>Bagage</th> -->
+                <th>Supprimer</th>
+                <th>Modifier</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let passager of passagers">
+                <!-- <td>
+                  {{passager.id}}
+                </td> -->
+                <td>{{passager.nom}}</td>
+                <td>{{passager.prenom}}</td>
+                <td>{{passager.numeroDePassPort}}</td>
+                <td>{{passager.numeroDeVisa}}</td>
+                <!-- <td>{{passager.Siege}}</td>
+                <td>{{passager.Reservation}}</td>
+                <td>{{passager.Bagage}}</td> -->
+                <td>
+                  <button (click)="supprimer(passager.id)">
+                    <i class="fa-solid fa-trash btn_action_two"></i>
+                  </button>
+                </td>
+                <td>
+                  <button (click)="openModal(passager)">
+                    <i class="fa-solid fa-pen btn_action_one"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for editing -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Modifier Passager</h2>
+    <br>
+    <form class="form_content" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="nom">Nom:</label>
+        <br>
+        <input type="text" id="nom" [(ngModel)]="selectedPassager.nom" name="nom">
+      </div>
+      <div>
+        <label for="prenom">Prenom:</label>
+        <br>
+        <input type="text" id="prenom" [(ngModel)]="selectedPassager.prenom" name="prenom">
+      </div>
+      <div>
+        <label for="NumeroDePasseport">NumeroDePasseport:</label>
+        <br>
+        <input type="text" id="numeroDePassPort" [(ngModel)]="selectedPassager.numeroDePassPort" name="numeroDePassPort">
+      </div>
+      <div>
+        <label for="numeroDeVisa">NumeroDeVisa:</label>
+        <br>
+        <input type="text" id="numeroDeVisa" [(ngModel)]="selectedPassager.numeroDeVisa" name="numeroDeVisa">
+      </div>
+      <!-- <div>
+        <label for="siege">Siege:</label>
+        <br>
+        <input type="text" id="siege" [(ngModel)]="selectedPassager.siege" name="siege">
+      </div>
+      <div>
+        <label for="reservation">Rreservation:</label>
+        <br>
+        <input type="text" id="reservation" [(ngModel)]="selectedPassager.reservation" name="reservation">
+      </div>
+      <div>
+        <label for="poste">Poste:</label>
+        <br>
+        <input type="text" id="poste" [(ngModel)]="selectedPassager.poste" name="poste">
+      </div>
+      <div>
+        <label for="bagage">Bagage:</label>
+        <br>
+        <input type="text" id="bagage" [(ngModel)]="selectedPassager.bagage" name="bagage">
+      </div> -->
+      <br>
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>

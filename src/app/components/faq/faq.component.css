@@ -1,0 +1,66 @@
+.body_page{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.content_fag_code{
+    background-color: white;
+    margin-top: 60px;
+    border-radius: 10px;
+    padding-top: 20px;
+}
+.title-container{
+    display: flex;
+    justify-content: center;
+}
+
+.title-container img{
+    margin-left: 10px;
+}
+.form_img_flex{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+input{
+    border-radius: 5px;
+    width: 300px;
+    height: 25px;
+}
+button{
+    border-radius: 5px;
+    width: 300px;
+    border: 2px solid #04BBC7;
+    color: black;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    font-weight: 600;
+    transition: .5s background-color, color;
+}
+button:hover{
+    background-color: #04BBC7;
+    color: white;
+    cursor: pointer;
+}
+
+.flex-btn-list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-btn-list a{
+    border-radius: 5px;
+    border: 2px solid #04BBC7;
+    color: black;
+    margin-top: 10px;
+    padding: 10px 10px 10px 10px;
+    font-weight: 600;
+    transition: .5s background-color, color;
+    text-decoration: none;
+}
+.flex-btn-list a:hover{
+    background-color: #04BBC7;
+    color: white;
+    cursor: pointer;
+}

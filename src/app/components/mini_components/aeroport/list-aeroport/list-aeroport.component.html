@@ -1,0 +1,107 @@
+<div class="body_page">
+  <div class="table-container">
+    <div style="display: flex;">
+      <div class="ajout_btn">
+        <img [ngSrc]="ajouterImage" alt="ajouter" width="20" height="20">
+        <h6><a href="" routerLink="/formulaireAeroport"> Ajouter Aéroport</a></h6>
+      </div>
+      <select name="" id="">
+        <optgroup>
+          <option value="Tous">Tous</option>
+          <option value="Tous">Pilotes</option>
+          <option value="Tous">Escortes</option>
+          <option value="Tous">Service de nettoyage</option>
+        </optgroup>
+      </select>
+      <input type="date">
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Nom</th>
+            <th>Code IATA</th>
+            <th>Longitude</th>
+            <th>Latitude</th>
+            <th>Altitude</th>
+            <th>Capacité</th>
+            <th>Nbre de pistes</th>
+            <th>Supprimer</th>
+            <th>Modifier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let aeroport of aeroports">
+            <td>{{aeroport.id}}</td>
+            <td>{{aeroport.nom}}</td>
+            <td>{{aeroport.codeIATA}}</td>
+            <td>{{aeroport.longitude}}</td>
+            <td>{{aeroport.latitude}}</td>
+            <td>{{aeroport.altitude}}</td>
+            <td>{{aeroport.capaciteParking}}</td>
+            <td>{{aeroport.nombreDePistes}}</td>
+            <td>
+              <button (click)="supprimer(aeroport.id)">
+                <i class="fa-solid fa-trash btn_action_two"></i>
+              </button>
+            </td>
+            <td>
+              <button (click)="openModal(aeroport)">
+                <i class="fa-solid fa-pen btn_action_one"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for editing -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Modifier Aéroport</h2>
+    <br>
+    <form (ngSubmit)="onSubmit()" class="form_content">
+      <div>
+        <label for="nom">Nom:</label>
+        <br>
+        <input type="text" id="nom" [(ngModel)]="selectedAeroport.nom" name="nom">
+      </div>
+      <div>
+        <label for="codeIATA">Code IATA:</label>
+        <br>
+        <input type="text" id="codeIATA" [(ngModel)]="selectedAeroport.codeIATA" name="codeIATA">
+      </div>
+      <div>
+        <label for="longitude">Longitude:</label>
+        <br>
+        <input type="number" id="longitude" [(ngModel)]="selectedAeroport.longitude" name="longitude">
+      </div>
+      <div>
+        <label for="latitude">Latitude:</label>
+        <br>
+        <input type="number" id="latitude" [(ngModel)]="selectedAeroport.latitude" name="latitude">
+      </div>
+      <div>
+        <label for="altitude">Altitude:</label>
+        <br>
+        <input type="number" id="altitude" [(ngModel)]="selectedAeroport.altitude" name="altitude">
+      </div>
+      <div>
+        <label for="capaciteParking">Capacité:</label>
+        <br>
+        <input type="number" id="capaciteParking" [(ngModel)]="selectedAeroport.capaciteParking" name="capaciteParking">
+      </div>
+      <div>
+        <label for="nombreDePistes">Nbre de pistes:</label>
+        <br>
+        <input type="number" id="nombreDePistes" [(ngModel)]="selectedAeroport.nombreDePistes" name="nombreDePistes">
+      </div>
+      <br>
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>

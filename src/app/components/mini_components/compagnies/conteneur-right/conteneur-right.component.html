@@ -1,0 +1,120 @@
+<div class="body_page">
+    <div style="display: flex;">
+      <div class="ajout_btn">
+          <img [ngSrc]="ajouterImage" alt="ajouer" width="20" height="20">
+          <h6><a href="" routerLink="/formulaireCompagnie"> Ajouter Compagnie</a></h6>
+      </div>
+        <select name="" id="">
+          <optgroup>
+            <option value="Tous">Tous</option>
+            <option value="Tous">Pilotes</option>
+            <option value="Tous">Escortes</option>
+            <option value="Tous">Service de nettoyage</option>
+          </optgroup>
+        </select>
+        <input type="date">
+    </div>
+    <div class="table-container">
+
+        <table>
+          <thead>
+            <tr>
+              <!-- <th>Id</th> -->
+              <th>Logo</th>
+              <th>Matricule</th>
+              <th>Nom</th>
+              <!-- <th>CodeIATA</th>
+              <th>CodeICAO</th> -->
+              <th>NumeroTelephone</th>
+              <th>E-mail</th>
+              <th>SiteWeb</th>
+              <!-- <th>NumeroLicence</th> -->
+              <th>Action</th>
+              <!-- <th>Modifier</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let compagnie of compagnies">
+              <!-- <td>
+                {{compagnie.id}}
+            </td> -->
+              <td>{{compagnie.logo}}</td>
+              <td>{{compagnie.matricule}}</td>
+              <td>{{compagnie.nom}}</td>
+              <!-- <td>{{compagnie.codeIATA}}</td>
+              <td>{{compagnie.codeICAO}}</td> -->
+              <td>{{compagnie.numeroTelephone}}</td>
+              <td>{{compagnie.email}}</td>
+              <td>{{compagnie.siteWeb}}</td>
+              <!-- <td>{{compagnie.numeroLicence}}</td> -->
+              <td style="display: flex;">
+                <button (click)="supprimer(compagnie.id)">
+                  <i class="fa-solid fa-trash btn_action_two"></i>
+                </button>
+                <button (click)="openModal(compagnie)">
+                  <i class="fa-solid fa-pen btn_action_one"></i>
+                </button>
+              </td>
+              <!-- <td>
+                <button (click)="openModal(compagnie)">
+                  <i class="fa-solid fa-pen btn_action_one"></i>
+                </button>
+              </td> -->
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal for editing -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Modifier Aéroport</h2>
+    <br>
+    <form (ngSubmit)="onSubmit()" class="form_content">
+      <div>
+        <label for="nom">Nom:</label>
+        <br>
+        <input type="text" id="nom" [(ngModel)]="selectedCompagnie.nom" name="nom">
+      </div>
+      <div>
+        <label for="matricule">Matricule:</label>
+        <br>
+        <input type="text" id="matricule" [(ngModel)]="selectedCompagnie.matricule" name="matricule">
+      </div>
+      <div>
+        <label for="codeICAO">code ICAO:</label>
+        <br>
+        <input type="text" id="codeICAO" [(ngModel)]="selectedCompagnie.codeICAO" name="codeICAO">
+      </div>
+      <div>
+        <label for="numeroTelephone">Tel:</label>
+        <br>
+        <input type="tel" id="numeroTelephone" [(ngModel)]="selectedCompagnie.numeroTelephone" name="numeroTelephone">
+      </div>
+      <div>
+        <label for="email">E-mail:</label>
+        <br>
+        <input type="email" id="email" [(ngModel)]="selectedCompagnie.email" name="email">
+      </div>
+      <div>
+        <label for="logo">Logo</label>
+        <br>
+        <input type="image" id="logo" [(ngModel)]="selectedCompagnie.logo" name="logo">
+      </div>
+      <div>
+        <label for="siteWeb">Site Web:</label>
+        <br>
+        <input type="text" id="siteWeb" [(ngModel)]="selectedCompagnie.siteWeb" name="siteWeb">
+      </div>
+      <div>
+        <label for="numeroLicence">Numero Licence:</label>
+        <br>
+        <input type="text" id="numeroLicence" [(ngModel)]="selectedCompagnie.numeroLicence" name="numeroLicence">
+      </div>
+      <br>
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="body_page">
+    <app-nav-bar></app-nav-bar>
+    <div style="width: 78%;">
+        <app-recherche></app-recherche>
+        <div class="two-conteneur">
+            <div class="container-left">
+                <h5>Mamoutou yalcouyé</h5>
+                <br><br>
+                <h2>Personnels</h2>
+            </div>
+            <div class="container-right">
+                <h3>Liste des Personnels</h3>
+                <div class="enregistrement">
+                    <h5>2</h5>
+                    <h5>Deliveary 123333</h5>
+                    <div>
+                        <i class="fa-solid fa-trash admin_corbeille" ></i>
+                        <i class="fa-solid fa-pen admin_modifier"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="formulaire-admin-list" (ngSubmit)="ajouter()">
+            <div class="">
+                <div class="content-flex-form">
+                    <div class="margin-top-div">
+                        <h3>Nom</h3>
+                        <input type="text" [(ngModel)]="nouveauPersonnel.nom" name="nom" required>
+                    </div>
+                    <div class="margin-top-div">
+                        <h3>Prénom</h3>
+                        <input type="text" [(ngModel)]="nouveauPersonnel.prenom" name="prenom" required>
+                    </div>
+                </div>
+                <div class="content-flex-form">
+                    <div class="margin-top-div">
+                        <h3>E-mail</h3>
+                        <input type="email" [(ngModel)]="nouveauPersonnel.email" name="email" required>
+                    </div>
+                    <div class="margin-top-div">
+                        <h3>Mot de passe</h3>
+                        <input type="text" [(ngModel)]="nouveauPersonnel.password" name="password" required>
+                    </div>
+                </div>
+                <div class="content-flex-form">
+                    <div>
+                        <h3>Tel</h3>
+                        <input type="text" [(ngModel)]="nouveauPersonnel.numeroDeTelephone" name="numeroDeTelephone" required>
+                    </div>
+                    <div>
+                        <h3>Poste</h3>
+                        <input type="text" [(ngModel)]="nouveauPersonnel.poste" name="poste" required>
+                    </div>
+                    <!-- <div class="margin-top-div">
+                        <select name="poste" id="poste">
+                            <optgroup [(ngModel)]="nouveauPersonnel.nom" name="nom" required>
+                                <option value="pilote">Pilote</option>
+                                <option value="servicenettoyage">Service de nettoyage</option>
+                                <option value="hotesse">Hôtesse</option>
+                            </optgroup>
+                        </select>
+                    </div> -->
+                </div>
+                <div class="margin-top-nom">
+                    
+                </div>
+            </div>
+            <div class="btn_enregistrement">
+                <button type="submit">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>

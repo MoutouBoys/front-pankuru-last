@@ -1,0 +1,41 @@
+<div class="body_page">
+    <app-nav-bar></app-nav-bar>
+
+    <div style="width: 78%;">
+        <app-recherche></app-recherche>
+        <br>
+        <form class="content_fag_code" (ngSubmit)="ajouter()">
+            <div class="flex-btn-list">
+                <div class="title-container">
+                    <h1>FAQ</h1>
+                    <img [ngSrc]="faq_icon" alt="faq_icon" width="30" height="30">
+                </div>
+                <a routerLink="/fistFagComponent">Liste des Faqs</a>
+            </div>
+            <div class="form_img_flex">
+                <div class="container-left">
+                    <h1>Formulaire</h1>
+                    <br>
+                    <div>
+                        <h4> Catégorie de la question</h4>
+                        <input type="text" [(ngModel)]="nouveauFaq.questionCategorie" name="questionCategorie" id="categorieQuestion" required>
+                    </div>
+                    <br>
+                    <div>
+                        <h4>reponse</h4>
+                        <input type="text" [(ngModel)]="nouveauFaq.reponse" name="reponse" id="reponse" required>
+                    </div>
+                    <br>
+                    <div>
+                        <h4>Id compagnie</h4>
+                        <input type="text" name="" id="" disabled>
+                    </div>
+                    <button type="submit">Envoyer</button>
+                </div>
+                <div class="container-rigth">
+                    <img [ngSrc]="faq1" alt="faq" width="350" height="350">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

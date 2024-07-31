@@ -1,0 +1,86 @@
+<div class="body_page">
+  <div class="table-container">
+    <div style="display: flex;">
+      <div class="ajout_btn">
+        <img [ngSrc]="ajouterImage" alt="ajouter" width="20" height="20">
+        <h6><a routerLink="/formulaireAvion">Ajouter Avion</a></h6>
+      </div>
+      <select name="" id="">
+        <optgroup>
+          <option value="Tous">Tous</option>
+          <option value="Pilotes">Pilotes</option>
+          <option value="Escortes">Escortes</option>
+          <option value="Service de nettoyage">Service de nettoyage</option>
+        </optgroup>
+      </select>
+      <input type="date">
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <!-- <th>Id</th> -->
+            <th>Matricule</th>
+            <th>Capacité totale</th>
+            <th>Nom</th>
+            <th>Statut</th>
+            <th>Supprimer</th>
+            <th>Modifier</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let avion of avions">
+            <!-- <td>{{ avion.id }}</td> -->
+            <td>{{ avion.matricule }}</td>
+            <td>{{ avion.capaciteTotale }}</td>
+            <td>{{ avion.nom }}</td>
+            <td>{{ avion.statut }}</td>
+            <td>
+              <button (click)="supprimer(avion.id)">
+                <i class="fa-solid fa-trash btn_action_two"></i>
+              </button>
+            </td>
+            <td>
+              <button (click)="openModal(avion)">
+                <i class="fa-solid fa-pen btn_action_one"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for editing -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Modifier Avion</h2>
+    <br>
+    <form (ngSubmit)="onSubmit()" class="form_content">
+      <div>
+        <label for="matricule">Matricule:</label>
+        <br>
+        <input type="text" id="matricule" [(ngModel)]="selectedAvion.matricule" name="matricule">
+      </div>
+      <div>
+        <label for="capaciteTotale">Capacité Totale:</label>
+        <br>
+        <input type="number" id="capaciteTotale" [(ngModel)]="selectedAvion.capaciteTotale" name="capaciteTotale">
+      </div>
+      <div>
+        <label for="nom">Nom:</label>
+        <br>
+        <input type="text" id="nom" [(ngModel)]="selectedAvion.nom" name="nom">
+      </div>
+      <div>
+        <label for="statut">Statut:</label>
+        <br>
+        <input type="text" id="statut" [(ngModel)]="selectedAvion.statut" name="statut">
+      </div>
+      <br>
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>

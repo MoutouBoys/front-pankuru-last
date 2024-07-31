@@ -1,0 +1,21 @@
+.conteneur_image_text{
+    display: flex;
+}
+.container-right{
+    height: 93.5%;
+    border-radius: 10px;
+}
+.body_page{
+    width: 100vw;
+    background-color: rgb(172, 243, 255);
+    justify-content: center;
+    padding-top: 20px;
+}
+.container-search-and-body{
+    margin-left: 15px;
+}
+/* @media (max-width:1000px) {
+    .body_page{
+        width: 100vw;
+    }
+} */

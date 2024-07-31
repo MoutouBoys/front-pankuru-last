@@ -1,0 +1,126 @@
+<div class="body_page">
+    <div class="table-container">
+        <div style="display: flex;">
+          <div class="ajout_btn">
+            <img [ngSrc]="ajouterImage" alt="ajouer" width="20" height="20">
+            <h6><a href="" routerLink="/formulairePersonnels"> Ajouter Personnels</a></h6>
+          </div>
+            <select name="" id="">
+              <optgroup>
+                <option value="Tous">Tous</option>
+                <option value="Tous">Pilotes</option>
+                <option value="Tous">Escortes</option>
+                <option value="Tous">Service de nettoyage</option>
+              </optgroup>
+            </select>
+            <input type="date">
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <!-- <th>Id</th> -->
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <!-- <th>Password</th> -->
+                <th>Tel</th>
+                <th>DateEmbauche</th>
+                <th>Service</th>
+                <th>Poste</th>
+                <!-- <th>CompagnieId</th> -->
+                <th>Action</th>
+                <!-- <th>Modifier</th> -->
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let personnel of personnels">
+                <!-- <td>{{personnel.id}}</td> -->
+                <td>{{personnel.nom}}</td>
+                <td>{{personnel.prenom}}</td>
+                <td>{{personnel.email}}</td>
+                <!-- <td>{{personnel.password}}</td> -->
+                <td>{{personnel.numeroDeTelephone}}</td>
+                <td>{{personnel.dateEmbauche}}</td>
+                <td>{{personnel.enService}}</td>
+                <td>{{personnel.poste}}</td>
+                <!-- <td>{{personnel.compagnie}}</td> -->
+                <td style="display: flex;">
+                  <button (click)="supprimer(personnel.id)">
+                    <i class="fa-solid fa-trash btn_action_two"></i>
+                  </button>
+                  <button (click)="openModal(personnel)">
+                    <i class="fa-solid fa-pen btn_action_one"></i>
+                  </button>
+                </td>
+                <!-- <td>
+                  <button (click)="openModal(personnel)">
+                    <i class="fa-solid fa-pen btn_action_one"></i>
+                  </button>
+                </td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal for editing -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Modifier personnel</h2>
+    <br>
+    <form (ngSubmit)="onSubmit()" class="form_content">
+      <div>
+        <label for="nom">Nom:</label>
+        <br>
+        <input type="text" id="nom" [(ngModel)]="selectedPersonnel.nom" name="nom">
+      </div>
+      <div>
+        <label for="prenom">Prenom:</label>
+        <br>
+        <input type="text" id="prenom" [(ngModel)]="selectedPersonnel.prenom" name="prenom">
+      </div>
+      <div>
+        <label for="email">email:</label>
+        <br>
+        <input type="email" id="email" [(ngModel)]="selectedPersonnel.email" name="email">
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <br>
+        <input type="password" id="password" [(ngModel)]="selectedPersonnel.password" name="password">
+      </div>
+      <div>
+        <label for="numeroDeTelephone">NumeroDeTelephone:</label>
+        <br>
+        <input type="text" id="numeroDeTelephone" [(ngModel)]="selectedPersonnel.numeroDeTelephone" name="numeroDeTelephone">
+      </div>
+      <div>
+        <label for="dateEmbauche">dateEmbauche:</label>
+        <br>
+        <input type="text" id="dateEmbauche" [(ngModel)]="selectedPersonnel.dateEmbauche" name="dateEmbauche">
+      </div>
+      <div>
+        <label for="poste">Poste:</label>
+        <br>
+        <input type="text" id="poste" [(ngModel)]="selectedPersonnel.poste" name="poste">
+      </div>
+      <div>
+        <label for="enService">Service:</label>
+        <br>
+        <input type="text" id="enService" [(ngModel)]="selectedPersonnel.enService" name="enService">
+      </div>
+      <div>
+        <label for="compagnie">Compagnie:</label>
+        <br>
+        <input type="text" id="compagnie" [(ngModel)]="selectedPersonnel.compagnie" name="compagnie">
+      </div>
+      <br>
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>

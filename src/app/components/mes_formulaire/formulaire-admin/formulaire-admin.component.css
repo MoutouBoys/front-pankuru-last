@@ -1,0 +1,154 @@
+.two_container{
+    background-color: red;
+}
+.body_page{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.container-left{
+    background-color: #04BBC7;
+    width: 40%;
+    padding: 30px 20px 30px 20px;
+    border-radius: 20px;
+    color: white;
+}
+.container-right{
+    background-color: white;
+    width: 50%;
+    padding: 30px 20px 30px 20px;
+    border-radius: 20px;
+}
+
+.two-conteneur{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.admin_corbeille, .admin_modifier{
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 2px;
+    transition: .5 opacity;
+}
+.admin_corbeille:hover, .admin_modifier:hover{
+    opacity: .5;
+}
+.admin_corbeille{
+    background-color: red;
+}
+.admin_modifier{
+    background-color: rgb(42, 148, 235);
+}
+.enregistrement{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.formulaire-admin-list{
+    background-color: white;
+    width: 100%;
+    height: 305px;
+    border-radius: 10px;
+    margin-top: 30px;
+    overflow: scroll;
+}
+
+.formulaire-admin-list::-webkit-scrollbar{
+    display: none;
+}
+.margin-top-nom{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.content-flex-form{
+    display: flex;
+    justify-content: space-around;
+}
+.margin-top-div{
+    margin-top: 25px;
+}
+input{
+    width: 300px;
+    height: 25px;
+    border-radius: 5px;
+}
+.btn_enregistrement button{
+    background-color: white;
+    border-color: #04BBC7;
+    padding: 10px 30px 10px 30px;
+    border-radius: 5px;
+    font-weight: 800;
+    transition: .5s background-color;
+}
+.btn_enregistrement button:hover{
+    background-color: #04BBC7;
+    color: white;
+    cursor: pointer;
+}
+.btn_enregistrement{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 900px) {
+    .margin-top-nom{
+        margin-top: 0px;
+    }
+    .margin-top-div{
+        margin-top: 10px;
+    }
+    input{
+        width: 180px;
+        height: 25px;
+    }
+    .formulaire-admin-list{
+        margin-top: 10px;
+        height: 270px;
+    }
+    .responsive_marge{
+        margin-left: 10px;
+    }
+    .body_page{
+        padding: 5px;
+    }
+    .container-left, .container-right{
+        padding: 10px;
+    }
+    .container-left{
+        margin-right: 10px;
+    }
+    .container-right{
+        margin-left: 10px;
+    }
+}
+@media (max-width: 400px) {
+    .container-left{
+        display: none;
+        width: 20px;
+    }
+    .container-right{
+        width: 220px;
+    }
+    .content-flex-form{
+        display: block;
+        justify-content: space-around;
+    }
+    .formulaire-admin-list{
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        height: 70%;
+    }
+    .formulaire-admin-list{
+        background-color: white;
+        width: 90%;
+       margin-left: 10px;
+    }
+}

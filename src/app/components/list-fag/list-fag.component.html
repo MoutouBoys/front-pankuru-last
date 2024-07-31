@@ -1,0 +1,99 @@
+<div class="body">
+    <!-- <app-title-vols></app-title-vols> -->
+    <app-nav-bar></app-nav-bar>
+    <div style="width: 78%;">
+        <app-recherche></app-recherche>
+        <div class="body_page">
+            <div class="conteneur">
+                <h5>Fags</h5>
+                <br>
+                <h6>Faqs en juillet</h6>
+                <br>
+                <div style="display: flex;">
+                    <h4>25%</h4>
+                    <img [ngSrc]="net" alt="net" width="20" height="20" style="margin-left: 10px;">
+                </div>
+            </div>
+        </div>
+        <div class="liste_faq">
+            <div style="display: flex;">
+              <div class="ajout_btn">
+                <img [ngSrc]="ajouterImage" alt="ajouer" width="20" height="20">
+                <h6><a href="" routerLink="/faq"> Ajouter un nouveau Faq</a></h6>
+              </div>
+                <select name="" id="">
+                  <optgroup>
+                    <option value="Tous">Tous</option>
+                    <option value="Tous">Pilotes</option>
+                    <option value="Tous">Escortes</option>
+                    <option value="Tous">Service de nettoyage</option>
+                  </optgroup>
+                </select>
+                <input type="date">
+            </div>
+              <div class="table-container">
+                  <div class="table-scroll">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Catégorie question</th>
+                          <th>Response</th>
+                          <th>Id compagnie</th>
+                          <th>Supprimer</th>
+                          <th>Modifier</th>
+            
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let faq of faqs">
+                          <td>{{faq.id}}</td>
+                          <td>{{faq.questionCategorie}}</td>
+                          <td>{{faq.reponse}}</td>
+                          <td>{{faq.compagnie}}</td>
+                          <td>
+                            <button (click)="supprimer(faq.id)">
+                              <i class="fa-solid fa-trash btn_action_two"></i>
+                            </button>
+                          </td>
+                          <td>
+                            <button (click)="openModal(faq)">
+                              <i class="fa-solid fa-pen faq btn_action_one"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Modal for editing -->
+          <div *ngIf="showModal" class="modal">
+            <div class="modal-content">
+              <span class="close" (click)="closeModal()">&times;</span>
+              <h2>Modifier Aéroport</h2>
+              <br>
+              <form (ngSubmit)="onSubmit()" class="form_content">
+                <div>
+                  <label for="questionCategorie">QuestionCategorie:</label>
+                  <br>
+                  <input type="text" id="questionCategorie" [(ngModel)]="selectedFaq.questionCategorie" name="questionCategorie">
+                </div>
+                <div>
+                  <label for="reponse">Reponse:</label>
+                  <br>
+                  <input type="text" id="reponse" [(ngModel)]="selectedFaq.reponse" name="reponse">
+                </div>
+                <div>
+                    <label for="compagnie">Reponse:</label>
+                    <br>
+                    <input type="text" id="compagnie" [(ngModel)]="selectedFaq.compagnie" name="compagnie">
+                  </div>
+                <br>
+                <button type="submit">Enregistrer</button>
+              </form>
+            </div>
+          </div>          
+    </div>
+</div>

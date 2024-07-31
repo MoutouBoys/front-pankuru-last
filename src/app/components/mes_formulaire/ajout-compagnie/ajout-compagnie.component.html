@@ -1,0 +1,71 @@
+<div class="body_page">
+    <app-nav-bar></app-nav-bar>
+    <div style="width: 78%;">
+        <app-recherche></app-recherche>
+        <div class="titre-ajout-compagnie">
+            <h1>Ajout d’une compagnie</h1>
+            <img [ngSrc]="maison" alt="maison" width="40" height="30">
+        </div>
+        <form class="content-all-form"  (ngSubmit)="ajouter()">
+            <div class="form_img_flex">
+                <div class="container-rigth">
+                    <img [ngSrc]="mask" alt="mask" width="80" height="80">
+                </div>
+                <div>
+                    <h1>Formulaire</h1>
+                    <br>
+                    <div class="content-div-left-right">
+                        <div class="container-left">
+                        
+                            <div>
+                                <h4>Nom de la compagnie</h4>
+                                <input type="text" [(ngModel)]="nouveauCompagnie.nom" name="nom" required>
+                            </div>
+                            <br>
+                            <div>
+                                <h4>Matricule</h4>
+                                <input type="text" [(ngModel)]="nouveauCompagnie.matricule" name="matricule" required>
+                            </div>
+                            <br>
+                            <div>
+                                <h4>Logo</h4>
+                                <input type="file" [(ngModel)]="nouveauCompagnie.logo" name="logo" required>
+                            </div>
+                            <br>
+                            <div>
+                                <h4>Code IATA</h4>
+                                <input type="number" [(ngModel)]="nouveauCompagnie.codeIATA" name="codeIATA" required>
+                            </div>
+                            <div style="margin-top: 5px;">
+                                <h4>code ICAO</h4>
+                                <input type="text" [(ngModel)]="nouveauCompagnie.codeICAO" name="codeIATA" required>
+                            </div>
+                        </div>
+                        <div class="container-right">
+                            <div>
+                                <h4>Numero Telephone</h4>
+                                <input type="tel" [(ngModel)]="nouveauCompagnie.numeroTelephone" name="numeroTelephone" required>
+                            </div>
+                            <br>
+                            <div>
+                                <h4>E-mail</h4>
+                                <input type="email" [(ngModel)]="nouveauCompagnie.email" name="email" required>
+                            </div>
+                            <br>
+                            <div>
+                                <h4>SiteWeb</h4>
+                                <input type="text" [(ngModel)]="nouveauCompagnie.siteWeb" name="siteWeb" required>
+                            </div>
+                            <br>
+                            <div>
+                                <h4>Numero Licence</h4>
+                                <input type="text" [(ngModel)]="nouveauCompagnie.numeroLicence" name="numeroLicence" required>
+                            </div>
+                            <button type="submit">Envoyer</button>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </form>
+    </div>
+</div>

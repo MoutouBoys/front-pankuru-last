@@ -1,0 +1,67 @@
+<div class="body_page">
+    <app-nav-bar></app-nav-bar>
+    <div style="width: 78%;">
+        <app-recherche></app-recherche>
+        <div class="two-conteneur">
+            <div class="container-left">
+                <h5>Nom Admin</h5>
+                <br><br>
+                <h2>Compagnie</h2>
+            </div>
+            <div class="container-right">
+                <h3>Liste des Compagnies</h3>
+                <div class="enregistrement">
+                    <h5>2</h5>
+                    <h5>Deliveary 123333</h5>
+                    <div>
+                        <i class="fa-solid fa-trash admin_corbeille" ></i>
+                        <i class="fa-solid fa-pen admin_modifier"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="formulaire-admin-list"  (ngSubmit)="ajouter()">
+            <div class="">
+                <div class="content-flex-form">
+                    <div class="margin-top-div">
+                        <h3>Nom Aéroport</h3>
+                        <input type="text" [(ngModel)]="nouveauAvion.nom" name="nom" required>
+                    </div>
+                    <div class="margin-top-div">
+                        <h3>CodeIATA</h3>
+                        <input type="text" [(ngModel)]="nouveauAvion.codeIATA" name="codeIATA" required>
+                    </div>
+                </div>
+                <div class="content-flex-form">
+                    <div class="margin-top-div">
+                        <h3>Longitude</h3>
+                        <input type="number" [(ngModel)]="nouveauAvion.longitude" name="latitude" required>
+                    </div>
+                    <div class="margin-top-div">
+                        <h3>Latitude</h3>
+                        <input type="number" [(ngModel)]="nouveauAvion.latitude" name="latitude" required>
+                    </div>
+                </div>
+                <div class="content-flex-form">
+                    <div class="margin-top-div">
+                        <h3>Altitude</h3>
+                        <input type="number" [(ngModel)]="nouveauAvion.altitude" name="altitude" required>
+                    </div>
+                    <div class="margin-top-div">
+                        <h3>CapaciteParking</h3>
+                        <input type="number" [(ngModel)]="nouveauAvion.capaciteParking" name="capaciteParking" required>
+                    </div>
+                </div>
+                <div class="margin-top-nom">
+                    <div>
+                        <h3>NombreDePistes</h3>
+                        <input type="number" [(ngModel)]="nouveauAvion.nombreDePistes" name="nombreDePistes" required>
+                    </div>
+                    <div class="btn_enregistrement">
+                        <button type="submit">Enregistrer</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

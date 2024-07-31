@@ -1,0 +1,59 @@
+<div class="body_page">
+    <app-nav-bar></app-nav-bar>
+    <div style="width: 78%;">
+        <app-recherche></app-recherche>
+        <div class="two-conteneur">
+            <div class="container-left">
+                <h5>Mamoutou Yalcouyé</h5>
+                <br><br>
+                <h2>Super Admin</h2>
+            </div>
+            <div class="container-right">
+                <h3>Liste des Super Admins</h3>
+                <div class="enregistrement">
+                    <h5>2</h5>
+                    <h5>Deliveary 123333</h5>
+                    <div>
+                        <i class="fa-solid fa-trash admin_corbeille" ></i>
+                        <i class="fa-solid fa-pen admin_modifier"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="formulaire-admin-list" (ngSubmit)="ajouter()">
+            <div>
+                <div class="">
+                    <div class="content-flex-form">
+                        <div class="margin-top-div">
+                            <h3>Nom</h3>
+                            <input type="text" [(ngModel)]="nouveauSuperAdmin.nom" name="nom" required>
+                        </div>
+                        <div class="margin-top-div responsive_marge">
+                            <h3>Prénom</h3>
+                            <input type="text" [(ngModel)]="nouveauSuperAdmin.prenom" name="prenom" required>
+                        </div>
+                    </div>
+                    <div class="content-flex-form">
+                        <div class="margin-top-div ">
+                            <h3>E-mail</h3>
+                            <input type="text" [(ngModel)]="nouveauSuperAdmin.email" name="email" required>
+                        </div>
+                        <div class="margin-top-div responsive_marge">
+                            <h3>Mot de passe</h3>
+                            <input type="text" [(ngModel)]="nouveauSuperAdmin.password" name="mot de passe" required>
+                        </div>
+                    </div>
+                    <div class="margin-top-nom">
+                        <div>
+                            <h3>Tel</h3>
+                            <input type="text" [(ngModel)]="nouveauSuperAdmin.tel" name="tel" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn_enregistrement">
+                    <button type="submit">Enregistrer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

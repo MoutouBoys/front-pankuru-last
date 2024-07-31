@@ -1,0 +1,17 @@
+.body_page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+.conteneur{
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 10px;
+    width: 180px;
+}
+.passagers_images{
+    display: flex; 
+    justify-content: space-around;
+}

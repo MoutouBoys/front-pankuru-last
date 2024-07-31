@@ -1,0 +1,51 @@
+<div class="body_page">
+    <app-nav-bar></app-nav-bar>
+    <div style="width: 78%;">
+        <app-recherche></app-recherche>
+        <div class="two-conteneur">
+            <div class="container-left">
+                <h5>Mamoutou yalcouyé</h5>
+                <br><br>
+                <h2>Passagers</h2>
+            </div>
+            <div class="container-right">
+                <h3>Liste des Passagers</h3>
+                <div class="enregistrement">
+                    <h5>2</h5>
+                    <h5>Deliveary 123333</h5>
+                    <div>
+                        <i class="fa-solid fa-trash admin_corbeille"></i>
+                        <i class="fa-solid fa-pen admin_modifier"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="formulaire-admin-list" (ngSubmit)="ajouter()">
+            <div>
+                <div class="content-flex-form">
+                    <div class="margin-top-div">
+                        <h3>Nom</h3>
+                        <input type="text" [(ngModel)]="nouveauAvion.nom" name="nom" required>
+                    </div>
+                    <div class="margin-top-div">
+                        <h3>Capacité totale</h3>
+                        <input type="text" [(ngModel)]="nouveauAvion.capaciteTotale" name="capaciteTotale" required>
+                    </div>
+                </div>
+                <div class="content-flex-form">
+                    <div class="margin-top-div">
+                        <h3>Matricule</h3>
+                        <input type="text" [(ngModel)]="nouveauAvion.matricule" name="matricule" required>
+                    </div>
+                    <div class="margin-top-div">
+                        <h3>Status</h3>
+                        <input type="text" [(ngModel)]="nouveauAvion.maintenance" name="maintenance" required>
+                    </div>
+                </div>
+            </div>
+            <div class="btn_enregistrement">
+                <button type="submit">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>

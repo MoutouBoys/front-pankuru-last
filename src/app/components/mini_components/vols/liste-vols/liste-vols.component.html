@@ -1,0 +1,101 @@
+<div class="body_page">
+  <div style="display: flex;">
+    <div class="ajout_btn">
+      <img [ngSrc]="ajouterImage" alt="ajouer" width="20" height="20">
+      <h6><a href="" routerLink="/formulaireVols"> Ajouter un nouveau vol</a></h6>
+    </div>
+      <select name="" id="">
+        <optgroup>
+          <option value="Tous">Tous</option>
+          <option value="Tous">Pilotes</option>
+          <option value="Tous">Escortes</option>
+          <option value="Tous">Service de nettoyage</option>
+        </optgroup>
+      </select>
+      <input type="date">
+  </div>
+    <div class="table-container">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <!-- <th>Id</th> -->
+                <th>NumeroDeVol</th>
+                <th>AéroportDepart</th>
+                <th>aeroportDArrivee</th>
+                <th>DateEtHeureArrivee</th>
+                <th>DateEtHeureDepart</th>
+                <th>Satut</th>
+                <th>Supprimer</th>
+                <th>Modifier</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vol of vols">
+                <!-- <td>{{vol.id}}</td> -->
+                <td>{{vol.numeroDeVol}}</td>
+                <td>{{vol.aeroportDepart}}</td>
+                <td>{{vol.aeroportDArrivee}}</td>
+                <td>{{vol.dateEtHeureDepart}}</td>
+                <td>{{vol.dateEtHeureArrivee}}</td>
+                <td>{{vol.satut}}</td>
+                <td>
+                  <button (click)="supprimer(vol.id)">
+                    <i class="fa-solid fa-trash btn_action_two"></i>
+                  </button>
+                </td>
+                <td>
+                  <button (click)="openModal(vol)">
+                    <i class="fa-solid fa-pen vol btn_action_one"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for editing -->
+<div *ngIf="showModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Modifier Aéroport</h2>
+    <br>
+    <form (ngSubmit)="onSubmit()" class="form_content">
+      <div>
+        <label for="numeroDeVol">NumeroDeVol:</label>
+        <br>
+        <input type="number" id="numeroDeVol" [(ngModel)]="selectedVol.numeroDeVol" name="numeroDeVol">
+      </div>
+      <div>
+        <label for="aeroportDepart">AéroportDepart:</label>
+        <br>
+        <input type="text" id="aeroportDepart" [(ngModel)]="selectedVol.aeroportDepart" name="aeroportDepart">
+      </div>
+      <div>
+        <label for="aeroportDArrivee">AeroportArrivee:</label>
+        <br>
+        <input type="text" id="aeroportDArrivee" [(ngModel)]="selectedVol.aeroportDepart" name="aeroportDArrivee">
+      </div>
+      <div>
+        <label for="dateEtHeureArrivee">DateEtHeureArrivee:</label>
+        <br>
+        <input type="text" id="dateEtHeureArrivee" [(ngModel)]="selectedVol.dateEtHeureArrivee" name="dateEtHeureArrivee">
+      </div>
+      <div>
+        <label for="dateEtHeureDepart">DateEtHeureDepart:</label>
+        <br>
+        <input type="text" id="dateEtHeureDepart" [(ngModel)]="selectedVol.dateEtHeureDepart" name="dateEtHeureDepart">
+      </div>
+      <div>
+        <label for="satut">statut:</label>
+        <br>
+        <input type="tel" id="satut" [(ngModel)]="selectedVol.satut" name="satut">
+      </div>
+      <br>
+      <button type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>

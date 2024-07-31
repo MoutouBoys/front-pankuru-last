@@ -1,0 +1,35 @@
+.body_page {
+    padding-bottom: 8px;
+    border-radius: 10px;
+    width: 75%;
+    height: 94vh;
+    background-color: white;
+    overflow-y: scroll;
+}
+.body_page::-webkit-scrollbar{
+    display: none;
+}
+.body_page h1 {
+    text-align: center;
+}
+.statistique h3 {
+    margin-left: 15px;
+}
+.conteneur-one, .conteneur-two{
+    background-color: white;
+    box-shadow: -2px 2px 10px rgb(131, 130, 130);
+    border-radius: 10px;
+    padding: 5px;
+}
+.statistique-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 15px;
+}
+
+.content-all{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+}

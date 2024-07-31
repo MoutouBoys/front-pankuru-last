@@ -1,0 +1,120 @@
+<div class="body">
+    <!-- <app-title-vols></app-title-vols> -->
+    <app-nav-bar></app-nav-bar>
+    <div style="width: 78%;">
+        <app-recherche></app-recherche>
+        <div class="title_admin">
+            <div class="conteneur">
+                <h5>Admin Liste</h5>
+                <br>
+                <h6>Hausse du nombre admins en juillet</h6>
+                <br>
+                <div style="display: flex;">
+                    <h4>10%</h4>
+                    <img [ngSrc]="net" alt="net" width="20" height="20" style="margin-left: 10px;">
+                </div>
+            </div>
+        </div>
+        <div class="List_admin">
+            <div style="display: flex;">
+              <div class="ajout_btn">
+                <img [ngSrc]="ajouterImage" alt="ajouer" width="20" height="20">
+                <h6><a href="" routerLink="/formulaireAdmin"> Ajouter un admin</a></h6>
+              </div>
+                <select name="" id="">
+                  <optgroup>
+                    <option value="Tous">Tous</option>
+                    <option value="Tous">Pilotes</option>
+                    <option value="Tous">Escortes</option>
+                    <option value="Tous">Service de nettoyage</option>
+                  </optgroup>
+                </select>
+                <input type="date">
+            </div>
+              <div class="table-container">
+                  <div class="table-scroll">
+                    <table>
+                      <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>numeroDeTelephone</th>
+                            <th>pseudo</th>
+                            <th>compagnie</th>
+                            <th>Supprimer</th>
+                            <th>Modifier</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let admin of admins">
+                            <td>{{admin.nom}}</td>
+                            <td>{{admin.prenom}}</td>
+                            <td>{{admin.email}}</td>
+                            <td>{{admin.password}}</td>
+                            <td>{{admin.numeroDeTelephone}}</td>
+                            <td>{{admin.pseudo}}</td>
+                            <td>{{admin.compagnie}}</td>
+                            <td>
+                            <button (click)="supprimer(admin.id)">
+                              <i class="fa-solid fa-trash btn_action_two"></i>
+                            </button>
+                          </td>
+                          <td>
+                            <button (click)="openModal(admin)">
+                              <i class="fa-solid fa-pen btn_action_one"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+          </div>
+    </div>
+</div>
+
+<!-- Modal for editing -->
+<div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Modifier Aéroport</h2>
+      <br>
+      <form (ngSubmit)="onSubmit()" class="form_content">
+        <div>
+          <label for="nom">Nom:</label>
+          <br>
+          <input type="text" id="nom" [(ngModel)]="selectedAdmin.nom" name="nom">
+        </div>
+        <div>
+          <label for="prenom">Prenom:</label>
+          <br>
+          <input type="text" id="prenom" [(ngModel)]="selectedAdmin.prenom" name="prenom">
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <br>
+          <input type="email" id="email" [(ngModel)]="selectedAdmin.email" name="email">
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <br>
+          <input type="password" id="password" [(ngModel)]="selectedAdmin.dateEtHeureArrivee" name="password">
+        </div>
+        <div>
+          <label for="numeroDeTelephone">NumeroDeTelephone:</label>
+          <br>
+          <input type="tel" id="numeroDeTelephone" [(ngModel)]="selectedAdmin.numeroDeTelephone" name="numeroDeTelephone">
+        </div>
+        <div>
+          <label for="pseudo">Pseudo:</label>
+          <br>
+          <input type="tel" id="pseudo" [(ngModel)]="selectedAdmin.pseudo" name="pseudo">
+        </div>
+        <br>
+        <button type="submit">Enregistrer</button>
+      </form>
+    </div>
+</div>
+  

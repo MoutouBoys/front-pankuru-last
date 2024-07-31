@@ -1,0 +1,63 @@
+<div class="body_page">
+    <app-nav-bar></app-nav-bar>
+    <div style="width: 78%;">
+        <app-recherche></app-recherche>
+        <div class="two-conteneur">
+            <div class="container-left">
+                <h5>Mamoutou Yalcouyé</h5>
+                <br><br>
+                <h2>Vols</h2>
+            </div>
+            <div class="container-right">
+                <h3>Liste des Vols</h3>
+                <div class="enregistrement">
+                    <h5>2</h5>
+                    <h5>Deliveary 123333</h5>
+                    <div>
+                        <i class="fa-solid fa-trash admin_corbeille" ></i>
+                        <i class="fa-solid fa-pen admin_modifier"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="formulaire-admin-list" (ngSubmit)="ajouter()">
+            <div class="">
+                <div class="margin-top-nom">
+                    <div>
+                        <h3>Numéro vol</h3>
+                        <input type="text" [(ngModel)]="nouveauvol.numeroDeVol" name="numeroDeVol" required>
+                    </div>
+                </div>
+                <div class="content-flex-form">
+                    <div class="margin-top-div">
+                        <h3>Aéroport Depart</h3>
+                        <input type="text" [(ngModel)]="nouveauvol.aeroportDepart" name="aeroportDepart" required>
+                    </div>
+                    <div class="margin-top-div">
+                        <h3>Aéroport arrivée</h3>
+                        <input type="text" [(ngModel)]="nouveauvol.aeroportArriverString" name="aeroportArriverString" required>
+                    </div>
+                </div>
+                <div class="content-flex-form">
+                    <div class="margin-top-div">
+                        <h3>Date Depart</h3>
+                        <input type="text" [(ngModel)]="nouveauvol.dateEtHeureArrivee" name="dateEtHeureArrivee" required>
+                    </div>
+                    <div class="margin-top-div">
+                        <h3>Date arrivée</h3>
+                        <input type="text" [(ngModel)]="nouveauvol.dateEtHeureDepart" name="dateEtHeureDepart" required>
+                    </div>
+                </div>
+                <div class="margin-top-nom">
+                    <div>
+                        <h3>Status</h3>
+                        <input type="text" [(ngModel)]="nouveauvol.satut" name="satut" required>
+                    </div>
+                </div>
+            </div>
+            <div class="btn_enregistrement">
+                <button type="submit">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>

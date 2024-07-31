@@ -1,0 +1,93 @@
+.two_container{
+    background-color: red;
+}
+.body_page{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.container-left{
+    background-color: #04BBC7;
+    width: 40%;
+    padding: 30px 20px 30px 20px;
+    border-radius: 20px;
+    color: white;
+}
+.container-right{
+    background-color: white;
+    width: 50%;
+    padding: 30px 20px 30px 20px;
+    border-radius: 20px;
+}
+
+.two-conteneur{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.admin_corbeille, .admin_modifier{
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 2px;
+    transition: .5 opacity;
+}
+.admin_corbeille:hover, .admin_modifier:hover{
+    opacity: .5;
+}
+.admin_corbeille{
+    background-color: red;
+}
+.admin_modifier{
+    background-color: rgb(42, 148, 235);
+}
+.enregistrement{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.formulaire-admin-list{
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+.margin-top-nom{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.content-flex-form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.margin-top-div{
+    margin-top: 25px;
+}
+input{
+    width: 300px;
+    height: 25px;
+    border-radius: 5px;
+}
+.btn_enregistrement button{
+    background-color: white;
+    border-color: #04BBC7;
+    padding: 10px 30px 10px 30px;
+    border-radius: 5px;
+    font-weight: 800;
+    transition: .5s background-color;
+}
+.btn_enregistrement button:hover{
+    background-color: #04BBC7;
+    color: white;
+    cursor: pointer;
+}
+.btn_enregistrement{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}

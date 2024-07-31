@@ -1,0 +1,13 @@
+.body_page{
+    background-color: rgb(172, 243, 255);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 10px 20px 10px;
+}
+
+.categoris_list_pers{
+    display: flex;
+}

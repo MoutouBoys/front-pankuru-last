@@ -1,0 +1,10 @@
+.two-conteneur{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.body_page{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
