@@ -7,15 +7,27 @@
 }
 .body_page{
     width: 100vw;
-    background-color: rgb(172, 243, 255);
     justify-content: center;
     padding-top: 20px;
 }
 .container-search-and-body{
     margin-left: 15px;
 }
-/* @media (max-width:1000px) {
-    .body_page{
-        width: 100vw;
-    }
-} */
+@media (max-width:1000px) {
+  .container-search-and-body{
+  margin-right: 5px;
+  margin-left: 5px;
+
+}
+}
+/* Cette concerne l'animation */
+.fade-in {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateX(0);
+}

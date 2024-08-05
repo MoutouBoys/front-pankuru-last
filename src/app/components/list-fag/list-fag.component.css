@@ -11,7 +11,7 @@
     margin-top: 15px;
 }
 .conteneur{
-    background-color: white;
+    background-color: var(--white);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 10px;
@@ -21,16 +21,16 @@
 
 /* Cette partie concerne les tables */
 .liste_faq{
-    background-color: white;
+    background-color: var(--white);
     border-radius: 10px;
     margin-top: 15px;
     padding-top: 2px;
     overflow: hidden; /* Masquer le défilement pour le reste de la page */
-    max-height: 56vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .table-scroll {
-  max-height: 400px; /* Ajustez la hauteur selon vos besoins */
+  max-height: 210px; /* Ajustez la hauteur selon vos besoins */
   overflow: scroll;
 }
 .table-scroll::-webkit-scrollbar{
@@ -41,18 +41,18 @@
     width: 100%;
     overflow-x: auto;
   }
-  
+
   table {
     width: 100%;
     border-collapse: collapse;
   }
-  
+
   th, td {
     padding: 12px;
     text-align: center;
     border-bottom: 1px solid #ddd;
   }
-  
+
   tbody button{
     border: none;
     background-color: transparent;
@@ -60,15 +60,15 @@
 
   th {
     background-color: #f4f4f4;
-    background-color: rgb(0, 217, 255);
-    color: white;
+    background-color: var(--blue-pers);
+    color: var(--black-night);
   }
   tbody tr{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   .ajout_btn{
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: rgb(172, 243, 255);
@@ -81,7 +81,7 @@
     color: black;
   }
   .ajout_btn a{
-    text-decoration: none; 
+    text-decoration: none;
     color: black;
     font-size: 12px;
   }
@@ -138,7 +138,7 @@
     color: white;
   }
 
-    
+
 /* Modal styles */
 .modal {
   display: flex;
@@ -212,4 +212,32 @@
   background-color: #04BBC7;
   color: white;
   cursor: pointer;
+}
+
+/* Modal de confirmation de suppression*/
+.modal .modal_btn_del, .modal .modal_btn_up{
+  width: 90px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  transition: .5s background-color, color;
+  cursor: pointer;
+}
+.modal .modal_btn_del{
+  background-color: var(--red);
+}
+.modal .modal_btn_up{
+  background-color: var(--blue-pers);
+  margin-left: 10px;
+}
+
+.modal .modal_btn_del:hover{
+  background-color: rgb(170, 10, 10);
+  color: var(--white);
+}
+.modal .modal_btn_up:hover{
+  background-color: #05747c;
+  margin-left: 10px;
+  color: var(--white);
 }

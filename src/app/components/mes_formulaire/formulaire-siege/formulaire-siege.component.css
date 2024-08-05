@@ -11,49 +11,69 @@
     width: 40%;
     padding: 30px 20px 30px 20px;
     border-radius: 20px;
-    color: white;
+    color: var(--white);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .container-right{
-    background-color: white;
+    background-color: var(--white);
     width: 50%;
     padding: 30px 20px 30px 20px;
     border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.content-all{
+  width: 78%;
+}
 .two-conteneur{
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
 }
-.admin_corbeille, .admin_modifier{
-    border: 1px solid black;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin: 2px;
-    transition: .5 opacity;
+.admin_corbeille, .admin_modifier {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 2px;
+  transition: .5s opacity;
+  text-align: center;
+  transition: .5s background-color, color;
 }
-.admin_corbeille:hover, .admin_modifier:hover{
-    opacity: .5;
+
+.admin_corbeille:hover{
+  color: var(--white);
+  background-color: red;
 }
-.admin_corbeille{
-    background-color: red;
+.admin_modifier:hover {
+  color: var(--white);
+  background-color: #04BBC7;
 }
-.admin_modifier{
-    background-color: rgb(42, 148, 235);
+
+.admin_corbeille {
+  background-color: var(--white);
+  color: red;
+  border-color: red;
 }
+
+.admin_modifier {
+  background-color: var(--white);
+  color: #04BBC7;
+  border-color: #04BBC7;
+}
+
 .enregistrement{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .formulaire-admin-list{
-    background-color: white;
-    width: 100%;
+    background-color: var(--white);
     border-radius: 10px;
     margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .margin-top-nom{
     padding-top: 20px;
@@ -69,7 +89,7 @@
     margin-top: 25px;
 }
 input{
-    width: 300px;
+    width: 100%;
     height: 25px;
     border-radius: 5px;
 }
@@ -90,4 +110,23 @@ input{
     margin-top: 20px;
     display: flex;
     justify-content: center;
+}
+@media (max-width: 900px) {
+.two-conteneur{
+display: none;
+}
+.formulaire-admin-list{
+justify-content: center;
+align-items: center;
+display: flex;
+position: relative;
+overflow: scroll;
+margin-top: 10px;
+}
+.content-flex-form{
+display: block;
+}
+.body_page{
+padding: 20px 0px 0px 0px;
+}
 }

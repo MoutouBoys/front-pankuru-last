@@ -5,6 +5,7 @@ import { RechercheComponent } from '../../recherche/recherche.component';
 import { PassagersService } from '../../../service/passagers/passagers.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formulaire-passager',
@@ -14,11 +15,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './formulaire-passager.component.css'
 })
 export class FormulairePassagerComponent implements OnInit {
-  
+
   public passagers: any;
   public nouveauPassager: any = { nom: '', prenom: '', NumeroDePasseport: '', passwprd: '', NumeroDeVisa:''};
 
-  constructor(private passagerservice: PassagersService, private router: Router) {}
+  constructor(private passagerservice: PassagersService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.afficher();
@@ -42,9 +43,12 @@ export class FormulairePassagerComponent implements OnInit {
       next: (response) => {
         console.log("Pasager ajouté avec succès", response);
         this.nouveauPassager = { nom: '', prenom: '', NumeroDePasseport: '', passwprd: '', NumeroDeVisa:''}; // Réinitialiser le formulaire
+        this.toastr.success("Passager ajouté avec succès", "Success");
         this.afficher(); // Mettre à jour la liste des passagers après ajout
+        this.router.navigate(["/passager"]);
       },
       error: (err) => {
+        this.toastr.error("Erreur lors de l'ajout du passager", "Fermer");
         console.error("Erreur lors de l'ajout du Passager: ", err);
       }
     });

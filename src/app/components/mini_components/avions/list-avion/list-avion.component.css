@@ -1,32 +1,34 @@
 .body_page {
+  /* width: 62.5vw; */
   background-color: white;
   border-radius: 10px;
-  padding-bottom: 10px;
-  padding-top: 2px;
+  padding: 2px 0 10px;
   margin-top: 15px;
-  overflow: hidden; /* Masquer le défilement pour le reste de la page */
-  max-height: 56vh;  
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .table-container {
   width: 100%;
+  overflow-x: auto;
+}
+
+.table-container::-webkit-scrollbar {
+  display: none;
 }
 
 .table-scroll {
   max-height: 400px; /* Ajustez la hauteur selon vos besoins */
   overflow: scroll;
 }
-.table-scroll::-webkit-scrollbar{
+
+.table-scroll::-webkit-scrollbar {
   display: none;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;
-}
-
-tbody button{
-  border: none;
-  background-color: transparent;
 }
 
 th, td {
@@ -35,10 +37,14 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
+tbody button {
+  border: none;
+  background-color: transparent;
+}
+
 th {
-  background-color: #f4f4f4;
-  background-color: rgb(0, 217, 255);
-  color: white;
+  background-color: var(--blue-pers);
+  color: var(--black-night);
 }
 
 tbody tr {
@@ -48,15 +54,13 @@ tbody tr {
 .ajout_btn {
   display: flex;
   align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
   background-color: rgb(172, 243, 255);
   border: 3px solid rgb(0, 217, 255);
-  width: 150px;
+  width: 30%;
   border-radius: 5px;
-  margin-bottom: 2px;
   cursor: pointer;
-  transition: .5s background-color;
+  transition: background-color 0.5s;
   color: black;
 }
 
@@ -80,12 +84,10 @@ input:hover, select:hover {
   color: white;
 }
 
-.table-container select, .table-container input {
-  background-color: rgb(0, 217, 255);
-  width: 150px;
+select, input {
+  background-color: rgb(172, 243, 255);
   border-radius: 5px;
   margin-bottom: 2px;
-  background-color: rgb(172, 243, 255);
   border: 3px solid rgb(0, 217, 255);
   font-size: 12px;
   margin-left: 5px;
@@ -93,7 +95,15 @@ input:hover, select:hover {
   font-weight: 600;
   outline: none;
   cursor: pointer;
-  transition: .5s background-color, color;
+  transition: background-color 0.5s, color 0.5s;
+}
+select{
+width: 30%;
+height: 47px;
+}
+input{
+width: 30%;
+height: 40px;
 }
 
 .btn_action_one, .btn_action_two {
@@ -101,7 +111,8 @@ input:hover, select:hover {
   border-radius: 20px;
   padding: 5px;
   cursor: pointer;
-  transition: .5s background-color;
+  transition: background-color 0.5s;
+  margin-left: 5px;
 }
 
 .btn_action_one {
@@ -148,6 +159,7 @@ input:hover, select:hover {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  box-sizing: border-box;
 }
 
 .close {
@@ -157,10 +169,10 @@ input:hover, select:hover {
   font-size: 28px;
   font-weight: bold;
   background-color: red;
-  padding: 0px 10px 0px 10px;
+  padding: 0 10px;
   border-radius: 20px;
   border: 1px solid black;
-  transition: .5s background-color, color;
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .close:hover,
@@ -172,12 +184,11 @@ input:hover, select:hover {
 }
 
 .form_content input {
-  background-color: rgb(0, 217, 255);
+  background-color: rgb(172, 243, 255);
   width: 250px;
   height: 25px;
   border-radius: 5px;
   margin-bottom: 2px;
-  background-color: rgb(172, 243, 255);
   border: 3px solid rgb(0, 217, 255);
   font-size: 12px;
   margin-left: 5px;
@@ -193,11 +204,59 @@ input:hover, select:hover {
   padding: 10px 30px;
   border-radius: 5px;
   font-weight: 800;
-  transition: .5s background-color;
+  transition: background-color 0.5s;
 }
 
 .form_content button:hover {
   background-color: #04BBC7;
   color: white;
   cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .body_page {
+      /* width: 80vw; */
+      /* margin: 10px auto; */
+  }
+  .table-container {
+      overflow-x: scroll;
+  }
+  table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+  }
+  th, td {
+      display: inline-block;
+      width: auto;
+  }
+}
+
+/* Modal de confirmation de suppression*/
+.modal .modal_btn_del, .modal .modal_btn_up{
+  width: 90px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  transition: .5s background-color, color;
+  cursor: pointer;
+}
+.modal .modal_btn_del{
+  background-color: var(--red);
+}
+.modal .modal_btn_up{
+  background-color: var(--blue-pers);
+  margin-left: 10px;
+}
+
+.modal .modal_btn_del:hover{
+  background-color: rgb(170, 10, 10);
+  color: var(--white);
+}
+.modal .modal_btn_up:hover{
+  background-color: #05747c;
+  margin-left: 10px;
+  color: var(--white);
 }

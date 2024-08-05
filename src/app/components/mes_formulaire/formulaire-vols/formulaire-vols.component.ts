@@ -5,6 +5,7 @@ import { RechercheComponent } from '../../recherche/recherche.component';
 import { VolService } from '../../../service/vols/vol.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formulaire-vols',
@@ -15,11 +16,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class FormulaireVolsComponent implements OnInit {
   ajouterImage: string = "assets/images/Ajouter.png";
-  
-  public vols: any;
-  public nouveauvol: any = { numeroDeVol: '', aeroportDepart: '', aeroportArriverString: '', dateEtHeureArrivee: '', dateEtHeureDepart: '', satut: ''};
 
-  constructor(private volService: VolService, private router: Router) {}
+  public vols: any;
+  public nouveauvol: any = { numeroDeVol: '', aeroportDepart: '', aeroportDArrivee: '', dateEtHeureArrivee: '', dateEtHeureDepart: '', satut: ''};
+
+  constructor(private volService: VolService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.afficher();
@@ -42,10 +43,13 @@ export class FormulaireVolsComponent implements OnInit {
     this.volService.postVol(this.nouveauvol).subscribe({
       next: (response) => {
         console.log("vol ajouté avec succès", response);
-        this.nouveauvol = { numeroDeVol: '', aeroportDepart: '', aeroportArriverString: '', dateEtHeureArrivee: '', dateEtHeureDepart: '', satut: ''}; // Réinitialiser le formulaire
+        this.nouveauvol = { numeroDeVol: '', aeroportDepart: '', aeroportDArrivee: '', dateEtHeureArrivee: '', dateEtHeureDepart: '', satut: ''}; // Réinitialiser le formulaire
+        this.toastr.success("Vol ajouté avec succès", "Success");
         this.afficher(); // Mettre à jour la liste des avions après ajout
+        this.router.navigate(["/vol"]);
       },
       error: (err) => {
+        this.toastr.error("Erreur lors de l'ajout du vol", "Fermer");
         console.error("Erreur lors de l'ajout du vol: ", err);
       }
     });

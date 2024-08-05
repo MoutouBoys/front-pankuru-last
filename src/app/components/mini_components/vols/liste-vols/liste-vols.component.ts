@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { VolService } from '../../../../service/vols/vol.service';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-liste-vols',
@@ -13,12 +14,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class ListeVolsComponent  implements OnInit {
   ajouterImage: string = "assets/images/Ajouter.png";
-  
+
   public vols: any;
   public showModal: boolean = false;
   public selectedVol: any = {};
+  public showDeleteModal: boolean = false;
+  public volToDelete: any = {};
 
-  constructor(private volservice: VolService, private router: Router) {}
+
+  constructor(private volservice: VolService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.afficher();
@@ -37,17 +41,30 @@ export class ListeVolsComponent  implements OnInit {
     });
   }
 
-  supprimer(id: number): void {
-    this.volservice.deleteVol(id).subscribe({
+
+  openDeleteModal(aeroport: any): void {
+    this.volToDelete = aeroport;
+    this.showDeleteModal = true;
+  }
+
+  closeDeleteModal(): void {
+    this.showDeleteModal = false;
+  }
+
+  confirmDelete(): void {
+    this.volservice.deleteVol(this.volToDelete.id).subscribe({
       next: (response) => {
-        console.log("vols supprimé avec succès", response);
+        console.log("Vol supprimé avec succès", response);
+        this.toastr.success("Vol modifier avec succès", "Success");
         this.afficher(); // Mettre à jour la liste des aéroports après suppression
+        this.closeDeleteModal();
       },
       error: (err) => {
-        console.error("Erreur lors de la suppression de vols: ", err);
+        console.error("Erreur lors de la suppression du vol: ", err);
       }
     });
   }
+
 
   openModal(aeroport: any): void {
     this.selectedVol = { ...aeroport }; // Copier l'objet aéroport
@@ -62,6 +79,7 @@ export class ListeVolsComponent  implements OnInit {
     this.volservice.updateVol(this.selectedVol.id, this.selectedVol).subscribe({
       next: () => {
         this.closeModal();
+        this.toastr.success("Vol modifier avec succès", "Success");
         this.afficher();
       },
       error: (err) => {

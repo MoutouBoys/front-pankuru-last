@@ -61,12 +61,22 @@
                         </select>
                     </div> -->
                 </div>
-                <div class="margin-top-nom">
-                    
+                <div class="content-flex-form">
+                  <div>
+                    <h3>Rôle</h3>
+                    <select name="role" id="role" [(ngModel)]="nouveauPersonnel.role">
+                    <optgroup>
+                        <option value="1">ADMIN</option>
+                        <option value="2">USER</option>
+                        <option value="3">ADMINCOMPAGNIE</option>
+                        <option value="4">PERSONNEL</option>
+                    </optgroup>
+                    </select>
+                  </div>
+                  <div class="btn_enregistrement">
+                    <button type="submit">Enregistrer</button>
+                  </div>
                 </div>
-            </div>
-            <div class="btn_enregistrement">
-                <button type="submit">Enregistrer</button>
             </div>
         </form>
     </div>

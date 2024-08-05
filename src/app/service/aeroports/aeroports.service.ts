@@ -1,29 +1,42 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthServiceService } from '../auth_service/auth-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AeroportsService {
-
   public baseUrl = "http://localhost:8080/aeroport";
-  
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient, private authService: AuthServiceService) {}
+
+  private createAuthorizationHeader(): HttpHeaders {
+    const username = this.authService.getUsername();
+    const password = this.authService.getPassword();
+    const credentials = btoa(`${username}:${password}`);
+    return new HttpHeaders({
+      'Authorization': `Basic ${credentials}`
+    });
+  }
 
   getAeroport(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/afficher`);
+    const headers = this.createAuthorizationHeader();
+    return this.http.get(`${this.baseUrl}/afficher`, { headers });
   }
 
   postAeroport(aeroport: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/ajout`, aeroport);
+    const headers = this.createAuthorizationHeader();
+    return this.http.post(`${this.baseUrl}/ajout`, aeroport, { headers });
   }
 
   updateAeroport(id: number, aeroport: Object): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/modifier/${id}`, aeroport);
+    const headers = this.createAuthorizationHeader();
+    return this.http.put(`${this.baseUrl}/modifier/${id}`, aeroport, { headers });
   }
 
   deleteAeroport(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/supprimer/${id}`);
+    const headers = this.createAuthorizationHeader();
+    return this.http.delete(`${this.baseUrl}/supprimer/${id}`, { headers });
   }
 }

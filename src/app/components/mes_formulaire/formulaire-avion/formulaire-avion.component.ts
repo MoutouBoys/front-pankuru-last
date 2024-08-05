@@ -5,6 +5,7 @@ import { RechercheComponent } from '../../recherche/recherche.component';
 import { AvionService } from '../../../service/avions/avion.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formulaire-avion',
@@ -15,11 +16,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class FormulaireAvionComponent implements OnInit {
   ajouterImage: string = "assets/images/Ajouter.png";
-  
-  public avions: any;
-  public nouveauAvion: any = { nom: '', capaciteTotale: '', matricule: '', maintenance: '' };
 
-  constructor(private avionService: AvionService, private router: Router) {}
+  public avions: any;
+  public nouveauAvion: any = { nom: '', capaciteTotale: '', matricule: '', maintenance: '', adminCompagnie:'' };
+
+  constructor(private avionService: AvionService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.afficher();
@@ -39,13 +40,20 @@ export class FormulaireAvionComponent implements OnInit {
   }
 
   ajouter(): void {
-    this.avionService.postAvion(this.nouveauAvion).subscribe({
+    const avionToSend = {
+      ...this.nouveauAvion,
+      adminCompagnie: { id: this.nouveauAvion.adminCompagnie }
+    };
+    this.avionService.postAvion(avionToSend).subscribe({
       next: (response) => {
         console.log("Avion ajouté avec succès", response);
-        this.nouveauAvion = { nom: '', capaciteTotale: '', matricule: '', maintenance: '' }; // Réinitialiser le formulaire
+        this.nouveauAvion = { nom: '', capaciteTotale: '', matricule: '', maintenance: '', adminCompagnie:'' }; // Réinitialiser le formulaire
+        this.toastr.success("Avion ajouté avec succès", "Success");
         this.afficher(); // Mettre à jour la liste des avions après ajout
+        this.router.navigate(["/avion"]);
       },
       error: (err) => {
+        this.toastr.error("Erreur lors de l'ajout d'avion", "Fermer");
         console.error("Erreur lors de l'ajout de l'avion: ", err);
       }
     });

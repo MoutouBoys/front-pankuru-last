@@ -9,15 +9,17 @@
 .container-left{
     background-color: #04BBC7;
     width: 40%;
-    padding: 30px 20px 30px 20px;
+    padding: 20px 20px 20px 20px;
     border-radius: 20px;
     color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .container-right{
     background-color: white;
     width: 50%;
-    padding: 30px 20px 30px 20px;
+    padding: 20px 20px 20px 20px;
     border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .two-conteneur{
@@ -25,24 +27,38 @@
     justify-content: space-between;
     margin-top: 15px;
 }
-.admin_corbeille, .admin_modifier{
-    border: 1px solid black;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin: 2px;
-    transition: .5 opacity;
+.admin_corbeille, .admin_modifier {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 2px;
+  transition: .5s opacity;
+  text-align: center;
+  transition: .5s background-color, color;
 }
-.admin_corbeille:hover, .admin_modifier:hover{
-    opacity: .5;
+
+.admin_corbeille:hover{
+  color: var(--white);
+  background-color: red;
 }
-.admin_corbeille{
-    background-color: red;
+.admin_modifier:hover {
+  color: var(--white);
+  background-color: #04BBC7;
 }
-.admin_modifier{
-    background-color: rgb(42, 148, 235);
+
+.admin_corbeille {
+  background-color: var(--white);
+  color: red;
+  border-color: red;
+}
+
+.admin_modifier {
+  background-color: var(--white);
+  color: #04BBC7;
+  border-color: #04BBC7;
 }
 .enregistrement{
     display: flex;
@@ -50,19 +66,20 @@
     justify-content: space-between;
 }
 .formulaire-admin-list{
-    background-color: white;
+    background-color: var(--white);
     width: 100%;
-    height: 305px;
+    height: 345px;
     border-radius: 10px;
-    margin-top: 30px;
+    margin-top: 15px;
     overflow: scroll;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .formulaire-admin-list::-webkit-scrollbar{
     display: none;
 }
 .margin-top-nom{
-    padding-top: 20px;
+    padding-top: 0px;
     display: flex;
     justify-content: center;
 }
@@ -71,7 +88,7 @@
     justify-content: space-around;
 }
 .margin-top-div{
-    margin-top: 25px;
+    margin-top: 15px;
 }
 input{
     width: 300px;

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { SiegeService } from '../../../../service/sieges/siege.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-siege-list',
@@ -13,12 +14,14 @@ import { SiegeService } from '../../../../service/sieges/siege.service';
 })
 export class SiegeListComponent implements OnInit {
   ajouterImage: string = "assets/images/Ajouter.png";
-  
+
   public sieges: any;
   public showModal: boolean = false;
   public selectedSiege: any = {};
+  public showDeleteModal: boolean = false;
+  public siegeToDelete: any = {};
 
-  constructor(private siegeService: SiegeService, private router: Router) {}
+  constructor(private siegeService: SiegeService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.afficher();
@@ -41,14 +44,25 @@ export class SiegeListComponent implements OnInit {
     this.router.navigate(['/formulaireSiege']);
   }
 
-  supprimer(id: number): void {
-    this.siegeService.deleteSiege(id).subscribe({
+  openDeleteModal(aeroport: any): void {
+    this.siegeToDelete = aeroport;
+    this.showDeleteModal = true;
+  }
+
+  closeDeleteModal(): void {
+    this.showDeleteModal = false;
+  }
+
+  confirmDelete(): void {
+    this.siegeService.deleteSiege(this.siegeToDelete.id).subscribe({
       next: (response) => {
-        console.log("siege supprimé avec succès", response);
-        this.afficher(); // Mettre à jour la liste des sieges après suppression
+        console.log("aéroport supprimé avec succès", response);
+        this.toastr.error("Siege supprimer avec succès", "Fermer");
+        this.afficher(); // Mettre à jour la liste des aéroports après suppression
+        this.closeDeleteModal();
       },
       error: (err) => {
-        console.error("Erreur lors de la suppression du siege: ", err);
+        console.error("Erreur lors de la suppression de l'aéroports: ", err);
       }
     });
   }
@@ -66,6 +80,7 @@ export class SiegeListComponent implements OnInit {
     this.siegeService.updateSiege(this.selectedSiege.id, this.selectedSiege).subscribe({
       next: () => {
         this.closeModal();
+        this.toastr.success("Siege modifier avec succès", "Success");
         this.afficher();
       },
       error: (err) => {

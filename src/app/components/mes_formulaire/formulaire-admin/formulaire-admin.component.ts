@@ -5,6 +5,7 @@ import { RechercheComponent } from '../../recherche/recherche.component';
 import { FormsModule } from '@angular/forms';
 import { AdminService } from '../../../service/admins/admin.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formulaire-admin',
@@ -14,11 +15,13 @@ import { Router } from '@angular/router';
   styleUrl: './formulaire-admin.component.css'
 })
 export class FormulaireAdminComponent implements OnInit {
-  
-  public admins: any;
-  public nouveauAdmin: any = { nom: '', prenom: '', email: '', password: '', numeroDeTelephone:'', pseudo: ''};
 
-  constructor(private adminservice: AdminService, private router: Router) {}
+  public admins: any;
+  public nouveauAdmin: any = { nom: '', prenom: '', email: '', password: '', numeroDeTelephone:'', pseudo: '', compagnie:'', adresse:''};
+
+  constructor(private adminservice: AdminService, private router: Router,
+  private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.afficher();
@@ -41,10 +44,13 @@ export class FormulaireAdminComponent implements OnInit {
     this.adminservice.postAdmin(this.nouveauAdmin).subscribe({
       next: (response) => {
         console.log("Admin ajouté avec succès", response);
-        this.nouveauAdmin = { nom: '', prenom: '', email: '', password: '', numeroDeTelephone:'', pseudo: ''}; // Réinitialiser le formulaire
+        this.nouveauAdmin = { nom: '', prenom: '', email: '', password: '', numeroDeTelephone:'', pseudo: '', compagnie:'', adresse:''}; // Réinitialiser le formulaire
+        this.toastr.success("Admin ajouté avec succès", "Success");
         this.afficher(); // Mettre à jour la liste des admins après ajout
+        this.router.navigate(["/admin"]);
       },
       error: (err) => {
+        this.toastr.error("Erreur lors de l'ajout de l'admin", "Fermer");
         console.error("Erreur lors de l'ajout de l'admin: ", err);
       }
     });

@@ -42,9 +42,15 @@
                         <input type="text" [(ngModel)]="nouveauAvion.maintenance" name="maintenance" required>
                     </div>
                 </div>
-            </div>
-            <div class="btn_enregistrement">
-                <button type="submit">Enregistrer</button>
+                <div class="margin-top-nom">
+                  <div>
+                    <h3>Compagnie</h3>
+                    <input type="number" [(ngModel)]="nouveauAvion.compagnie" name="compagnie" required>
+                  </div>
+                </div>
+                <div class="btn_enregistrement">
+                    <button type="submit">Enregistrer</button>
+                </div>
             </div>
         </form>
     </div>

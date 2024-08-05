@@ -43,16 +43,26 @@
                             <input type="text" [(ngModel)]="nouveauSuperAdmin.password" name="mot de passe" required>
                         </div>
                     </div>
-                    <div class="margin-top-nom">
-                        <div>
-                            <h3>Tel</h3>
-                            <input type="text" [(ngModel)]="nouveauSuperAdmin.tel" name="tel" required>
+                      <div class="content-flex-form">
+                        <div class="margin-top-div">
+                          <h3>Téléphone</h3>
+                          <input type="text" [(ngModel)]="nouveauSuperAdmin.tel" name="tel" required>
                         </div>
+                        <div class="margin-top-div responsive_marge">
+                          <h3>Adresse</h3>
+                          <input type="number" [(ngModel)]="nouveauSuperAdmin.adresse" name="adresse" required>
+                        </div>
+                      </div>
                     </div>
-                </div>
-                <div class="btn_enregistrement">
-                    <button type="submit">Enregistrer</button>
-                </div>
+                    <div class="content-flex-form">
+                      <div class="margin-top-div responsive_marge">
+                        <h3>Pseudo</h3>
+                        <input type="number" [(ngModel)]="nouveauSuperAdmin.pseudo" name="pseudo" required>
+                      </div>
+                      <div class="btn_enregistrement">
+                        <button type="submit">Enregistrer</button>
+                      </div>
+                    </div>
             </div>
         </form>
     </div>

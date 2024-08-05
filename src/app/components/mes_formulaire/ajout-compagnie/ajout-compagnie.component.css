@@ -1,81 +1,144 @@
-.body_page{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-.content-all-form{
-    background-color: white;
-    margin-top: 10px;
-    padding-top: 35px;
-    border-radius: 10px;
-    padding-bottom: 25px;
-}
-.title-container{
-    display: flex;
-    justify-content: center;
+.body_page {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.title-container img{
-    margin-left: 10px;
+.content-all-form {
+  background-color: var(--white);
+  margin-top: 10px;
+  padding: 35px 20px 25px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.form_img_flex{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
+.title-container {
+  display: flex;
+  justify-content: center;
 }
-input{
-    border-radius: 5px;
-    width: 300px;
-    height: 25px;
+
+.title-container img {
+  margin-left: 10px;
 }
-button{
-    border-radius: 5px;
-    width: 300px;
-    background-color: white;
-    border: 2px solid #04BBC7;
-    color: white;
-    margin-top: 10px;
-    padding: 10px 10px 10px 10px;
-    cursor: pointer;
-    color: black;
-    font-weight: 900;
-    transition: .5s background-color, color;
+
+.form_img_flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-button:hover{
-    background-color: #04BBC7;
-    color: white;
+
+input {
+  border-radius: 5px;
+  width: 100%; /* Utiliser toute la largeur disponible */
+  max-width: 300px; /* Limite maximale de largeur */
+  height: 25px;
 }
-.container-rigth{
-    background-color: rgb(202, 202, 202);
-    border-radius: 50%;
-    padding: 100px;
-    position: relative;
+
+button {
+  border-radius: 5px;
+  width: 100%; /* Utiliser toute la largeur disponible */
+  max-width: 300px; /* Limite maximale de largeur */
+  background-color: white;
+  border: 2px solid #04BBC7;
+  color: white;
+  margin-top: 10px;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-weight: 900;
+  transition: .5s background-color, color;
+}
+
+button:hover {
+  background-color: #04BBC7;
+  color: white;
+}
+
+.container-rigth {
+  background-color: rgb(202, 202, 202);
+  border-radius: 50%;
+  padding: 50px; /* Réduction de padding pour petits écrans */
+  margin: 20px 0; /* Ajout de marge pour espacer les éléments */
+  position: relative;
 }
 
 /* Titre Page */
 
-.titre-ajout-compagnie{
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    border-radius: 10px;
-    margin-top: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 15px 0px 15px 0px;
-}
-.titre-ajout-compagnie h1{
-    margin-right: 20px;
+.titre-ajout-compagnie {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px;
 }
 
-.content-div-left-right{
-    display: flex;
-    justify-content: center;
+.titre-ajout-compagnie h1 {
+  margin-right: 20px;
 }
-.container-left{
-    margin-right: 10px;
+
+.content-div-left-right {
+  display: flex;
+  flex-wrap: wrap; /* Pour permettre le wrapping sur les petits écrans */
+  justify-content: center;
 }
+
+.container-left,
+.container-right {
+  flex: 1;
+  margin: 10px; /* Espacement entre les colonnes */
+}
+
+/* Responsive Design */
+
 @media (max-width: 900px) {
-    .body_page{
-        padding: 0px;
+  .body_page {
+      /* flex-direction: column; Passer à une mise en page en colonne */
+      align-items: center;
+      padding: 20px 0px 0px 0px;
+  }
+
+  .form_img_flex {
+      flex-direction: column; /* Empiler les éléments */
+      align-items: center;
+  }
+
+  .container-rigth {
+      padding: 50px; /* Réduire le padding sur les petits écrans */
+  }
+
+  .content-div-left-right {
+      flex-direction: column; /* Empiler les conteneurs */
+      align-items: center;
+  }
+
+  .container-left,
+  .container-right {
+      width: 100%;
+      max-width: 400px; /* Largeur maximale pour les petits écrans */
+  }
+.content-all-form{
+overflow: scroll;
+height: 62vh;
+padding: 0px 20px 5px 20px;
+}
+.content-all-form::-webkit-scrollbar{
+display: none;
+}
+.titre-ajout-compagnie {
+  padding: 15px;
+}
+.titre-ajout-compagnie h1 {
+  font-size: 15px;
+}
+.titre-ajout-compagnie img{
+width: 25px;
+height: 25px;
+}
+}
+@media (max-width: 400px) {
+  .content-all-form{
+    height: 57vh;
     }
 }

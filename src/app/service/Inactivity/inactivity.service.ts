@@ -8,7 +8,7 @@ import {ToastrService} from "ngx-toastr";
 })
 export class InactivityService {
   private timeoutId: any;
-  private readonly inactivityTime: number =  60 * 1000; //
+  private readonly inactivityTime: number =  5 * 60 * 1000; //
 
   constructor(
     private authService: AuthServiceService,

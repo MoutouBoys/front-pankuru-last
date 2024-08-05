@@ -5,15 +5,15 @@
     <div class="container_rigth">
         <div class="content_form">
             <div class="image_text">
-                <div class="image_background">
+                <!-- <div class="image_background">
                     <img [ngSrc]="logo1" alt="logo1" width="60" height="60">
-                </div>
+                </div> -->
                 <h1>Login</h1>
             </div>
             <div class="form_content">
                 <form (ngSubmit)="login()">
                     <div>
-                        <label>Identifiant/Email</label>
+                        <label>Email</label>
                         <br>
                         <div class="icon_email_password">
                             <input type="email" [(ngModel)]="username" name="username">
@@ -26,7 +26,7 @@
                         <label>Mot de passe</label>
                         <br>
                         <div class="icon_email_password">
-                            <input  type="password" name="password"  [(ngModel)]="password">
+                            <input  type="password" name="password" [(ngModel)]="password">
                             <i class="fa-solid fa-eye"></i>
                         </div>
 

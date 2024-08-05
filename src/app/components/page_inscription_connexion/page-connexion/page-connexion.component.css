@@ -83,3 +83,12 @@ button:hover{
 h5{
     color: red;
 }
+
+@media (max-width: 500px) {
+.container_left{
+display: none;
+}
+.container_rigth{
+  width: 100%;
+}
+}

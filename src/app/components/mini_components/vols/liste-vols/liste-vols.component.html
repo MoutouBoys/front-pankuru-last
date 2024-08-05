@@ -1,5 +1,5 @@
 <div class="body_page">
-  <div style="display: flex;">
+  <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
     <div class="ajout_btn">
       <img [ngSrc]="ajouterImage" alt="ajouer" width="20" height="20">
       <h6><a href="" routerLink="/formulaireVols"> Ajouter un nouveau vol</a></h6>
@@ -26,8 +26,8 @@
                 <th>DateEtHeureArrivee</th>
                 <th>DateEtHeureDepart</th>
                 <th>Satut</th>
-                <th>Supprimer</th>
-                <th>Modifier</th>
+                <th>Action</th>
+                <!-- <th>Modifier</th> -->
 
               </tr>
             </thead>
@@ -40,12 +40,12 @@
                 <td>{{vol.dateEtHeureDepart}}</td>
                 <td>{{vol.dateEtHeureArrivee}}</td>
                 <td>{{vol.satut}}</td>
-                <td>
-                  <button (click)="supprimer(vol.id)">
+                <td style="display: flex;">
+                  <button (click)="openDeleteModal(vol)">
                     <i class="fa-solid fa-trash btn_action_two"></i>
                   </button>
-                </td>
-                <td>
+                <!-- </td>
+                <td> -->
                   <button (click)="openModal(vol)">
                     <i class="fa-solid fa-pen vol btn_action_one"></i>
                   </button>
@@ -77,7 +77,7 @@
       <div>
         <label for="aeroportDArrivee">AeroportArrivee:</label>
         <br>
-        <input type="text" id="aeroportDArrivee" [(ngModel)]="selectedVol.aeroportDepart" name="aeroportDArrivee">
+        <input type="text" id="aeroportDArrivee" [(ngModel)]="selectedVol.aeroportDArrivee" name="aeroportDArrivee">
       </div>
       <div>
         <label for="dateEtHeureArrivee">DateEtHeureArrivee:</label>
@@ -97,5 +97,18 @@
       <br>
       <button type="submit">Enregistrer</button>
     </form>
+  </div>
+</div>
+
+<!-- Modal for deletion confirmation -->
+<div *ngIf="showDeleteModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeDeleteModal()">&times;</span>
+    <h2>Confirmer la suppression</h2>
+    <br>
+    <p>Voulez-vous vraiment supprimer cet aéroport ?</p>
+    <br>
+    <button (click)="confirmDelete()" class="modal_btn_del">Supprimer</button>
+    <button (click)="closeDeleteModal()" class="modal_btn_up">Annuler</button>
   </div>
 </div>

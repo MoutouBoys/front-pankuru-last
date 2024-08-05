@@ -1,13 +1,33 @@
 .two-conteneur{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     padding: 20px;
-position: relative;
-overflow: hidden;
+    position: relative;
+    overflow: hidden;
+}
+.container-margin-resp{
+  margin-left: 20px;
+  width: 79%;
+  }
+@media (max-width: 900px){
+    .two-conteneur{
+        /* margin-left: 10px; */
+        padding: 20px 5px 20px 0px;
+    }
+    .container-margin-resp{
+      margin-left: 2px;
+      }
 }
 
-/* @media (max-width: 900px){
-    .two-conteneur{
-        padding: 20px;
-    }
-} */
+/* Cette partie concerne l'animation */
+.slide-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.slide-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+

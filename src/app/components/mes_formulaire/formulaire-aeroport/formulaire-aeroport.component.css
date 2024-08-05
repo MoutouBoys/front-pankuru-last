@@ -1,94 +1,167 @@
 .two_container{
-    background-color: red;
+  background-color: red;
 }
 .body_page{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
 }
 .container-left{
-    background-color: #04BBC7;
-    width: 40%;
-    padding: 30px 20px 30px 20px;
-    border-radius: 20px;
-    color: white;
+  background-color: #04BBC7;
+  width: 40%;
+  padding: 30px 20px 30px 20px;
+  border-radius: 20px;
+  color: var(--white);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .container-right{
-    background-color: white;
-    width: 50%;
-    padding: 30px 20px 30px 20px;
-    border-radius: 20px;
+  background-color: var(--white);
+  width: 50%;
+  padding: 30px 20px 30px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .two-conteneur{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }
-.admin_corbeille, .admin_modifier{
-    border: 1px solid black;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin: 2px;
-    transition: .5 opacity;
+.admin_corbeille, .admin_modifier {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 2px;
+  transition: .5s opacity;
+  text-align: center;
+  transition: .5s background-color, color;
 }
-.admin_corbeille:hover, .admin_modifier:hover{
-    opacity: .5;
+
+.admin_corbeille:hover{
+  color: var(--white);
+  background-color: red;
 }
-.admin_corbeille{
-    background-color: red;
+.admin_modifier:hover {
+  color: var(--white);
+  background-color: #04BBC7;
 }
-.admin_modifier{
-    background-color: rgb(42, 148, 235);
+
+.admin_corbeille {
+  background-color: var(--white);
+  color: red;
+  border-color: red;
+}
+
+.admin_modifier {
+  background-color: var(--white);
+  color: #04BBC7;
+  border-color: #04BBC7;
 }
 .enregistrement{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .formulaire-admin-list{
-    background-color: white;
-    width: 100%;
-    height: 315px;
-    border-radius: 10px;
-    margin-top: 30px;
+  background-color: var(--white);
+  width: 100%;
+  height: 330px;
+  border-radius: 10px;
+  margin-top: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .margin-top-nom{
-    padding-top: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 100px;
+  margin-right: 100px;
 }
 .content-flex-form{
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 .margin-top-div{
-    margin-top: 25px;
+  margin-top: 15px;
 }
-input{
-    width: 300px;
-    height: 25px;
-    border-radius: 5px;
+input, select{
+  width: 300Px;
+  height: 25px;
+  border-radius: 5px;
 }
 .btn_enregistrement button{
-    background-color: white;
-    border-color: #04BBC7;
-    padding: 10px 30px 10px 30px;
-    border-radius: 5px;
-    font-weight: 800;
-    transition: .5s background-color;
+  background-color: white;
+  border-color: #04BBC7;
+  padding: 10px 30px 10px 30px;
+  border-radius: 5px;
+  font-weight: 800;
+  transition: .5s background-color;
 }
 .btn_enregistrement button:hover{
-    background-color: #04BBC7;
-    color: white;
-    cursor: pointer;
+  background-color: #04BBC7;
+  color: white;
+  cursor: pointer;
 }
 .btn_enregistrement{
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 800px) {
+.container-left{
+  width: 40%;
+  padding: 10px;
+}
+.container-right{
+  padding: 10px;
+}
+.body_page{
+padding: 20px 5px 0px 0px;
+}
+
+.formulaire-admin-list{
+justify-content: center;
+display: flex;
+align-items: center;
+overflow: scroll;
+position: relative;
+height: 365px;
+}
+.two-conteneur{
+display: none;
+}
+
+.margin-top-nom{
+margin-left: 0px;
+margin-right: 0px;
+}
+
+.formulaire-admin-list::-webkit-scrollbar{
+display: none;
+}
+input, select{
+width: 100%;
+}
+.btn_enregistrement{
+/* margin-top: 20px; */
+}
+.margin-top-div{
+margin-top: 5px;
+/* margin-left: 10px; */
+}
+}
+@media (max-width: 600px) {
+.formulaire-admin-list{
+margin-top: 10px;
+height: 380px;
+}
+.content-flex-form{
+display: block;
+
+  }
 }

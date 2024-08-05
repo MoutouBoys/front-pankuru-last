@@ -1,93 +1,171 @@
-.two_container{
-    background-color: red;
-}
-.body_page{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-.container-left{
-    background-color: #04BBC7;
-    width: 40%;
-    padding: 30px 20px 30px 20px;
-    border-radius: 20px;
-    color: white;
-}
-.container-right{
-    background-color: white;
-    width: 50%;
-    padding: 30px 20px 30px 20px;
-    border-radius: 20px;
+.body_page {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 
-.two-conteneur{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
+.main-content {
+  width: 78%;
 }
-.admin_corbeille, .admin_modifier{
-    border: 1px solid black;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin: 2px;
-    transition: .5 opacity;
+
+.container-left {
+  background-color: #04BBC7;
+  width: 40%;
+  padding: 30px 20px;
+  border-radius: 20px;
+  color: var(--white);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.admin_corbeille:hover, .admin_modifier:hover{
-    opacity: .5;
+
+.container-right {
+  background-color: var(--white);
+  width: 50%;
+  padding: 30px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.admin_corbeille{
-    background-color: red;
+
+.two-conteneur {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 15px;
 }
-.admin_modifier{
-    background-color: rgb(42, 148, 235);
+
+.admin_corbeille, .admin_modifier {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 2px;
+  transition: .5s opacity;
+  text-align: center;
+  transition: .5s background-color, color;
 }
-.enregistrement{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+.admin_corbeille:hover{
+  color: var(--white);
+  background-color: red;
 }
-.formulaire-admin-list{
-    background-color: white;
-    width: 100%;
-    border-radius: 10px;
-    margin-top: 15px;
-    padding: 10px 10px 15px 10px;
-    position: relative;
+.admin_modifier:hover {
+  color: var(--white);
+  background-color: #04BBC7;
 }
-.margin-top-nom{
-    display: flex;
-    justify-content: center;
+
+.admin_corbeille {
+  background-color: var(--white);
+  color: red;
+  border-color: red;
 }
-.content-flex-form{
-    display: flex;
-    justify-content: space-around;
+
+.admin_modifier {
+  background-color: var(--white);
+  color: #04BBC7;
+  border-color: #04BBC7;
 }
-.margin-top-div{
-    margin-top: 15px;
+
+.enregistrement {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-input{
-    width: 300px;
-    height: 25px;
-    border-radius: 5px;
+
+.formulaire-admin-list {
+  background-color: var(--white);
+  border-radius: 10px;
+  margin-top: 15px;
+  padding: 10px 10px 15px 10px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.btn_enregistrement button{
-    background-color: white;
-    border-color: #04BBC7;
-    padding: 10px 30px 10px 30px;
-    border-radius: 5px;
-    font-weight: 800;
-    transition: .5s background-color;
+
+.margin-top-nom {
+  display: flex;
+  justify-content: center;
 }
-.btn_enregistrement button:hover{
-    background-color: #04BBC7;
-    color: white;
-    cursor: pointer;
+
+.content-flex-form {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
-.btn_enregistrement{
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
+
+.margin-top-div {
+  margin-top: 15px;
+}
+
+input {
+  width: 400px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.btn_enregistrement button {
+  background-color: white;
+  border-color: #04BBC7;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-weight: 800;
+  transition: .5s background-color;
+}
+
+.btn_enregistrement button:hover {
+  background-color: #04BBC7;
+  color: white;
+  cursor: pointer;
+}
+
+.btn_enregistrement {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive Design */
+
+@media (max-width: 900px) {
+  .body_page {
+      align-items: center;
+      padding: 20px 0px 0px 0px;
+width: 95%;
+  }
+
+  .two-conteneur {
+      flex-direction: column;
+      align-items: center;
+margin-top: 0px;
+  }
+
+  .container-left, .container-right {
+      width: 100%;
+      max-width: 600px;
+line-height: 15px;
+      padding: 5px 5px;
+      margin-bottom: 20px;
+display: none;
+  }
+  .form-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+height: 68vh;
+overflow: scroll;
+  }
+  .form-content::-webkit-scrollbar{
+display: none;
+  }
+
+  .content-flex-form {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .margin-top-div, .margin-top-nom {
+      width: 100%;
+      max-width: 600px;
+      margin-bottom: 20px;
+  }
 }

@@ -12,6 +12,11 @@
     width: 180px;
 }
 .passagers_images{
-    display: flex; 
+    display: flex;
     justify-content: space-around;
+}
+@media (max-width: 500px) {
+  .body_page{
+    display: none;
+}
 }

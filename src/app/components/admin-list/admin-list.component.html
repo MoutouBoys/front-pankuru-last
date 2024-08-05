@@ -1,10 +1,10 @@
 <div class="body">
     <!-- <app-title-vols></app-title-vols> -->
     <app-nav-bar></app-nav-bar>
-    <div style="width: 78%;">
-        <app-recherche></app-recherche>
-        <div class="title_admin">
-            <div class="conteneur">
+    <div class="content-all spin-in ">
+        <app-recherche class="spin-in "></app-recherche>
+        <div class="title_admin spin-in ">
+            <div class="conteneur spin-in ">
                 <h5>Admin Liste</h5>
                 <br>
                 <h6>Hausse du nombre admins en juillet</h6>
@@ -15,9 +15,9 @@
                 </div>
             </div>
         </div>
-        <div class="List_admin">
+        <div class="List_admin spin-in ">
             <div style="display: flex;">
-              <div class="ajout_btn">
+              <div class="ajout_btn spin-in ">
                 <img [ngSrc]="ajouterImage" alt="ajouer" width="20" height="20">
                 <h6><a href="" routerLink="/formulaireAdmin"> Ajouter un admin</a></h6>
               </div>
@@ -31,8 +31,8 @@
                 </select>
                 <input type="date">
             </div>
-              <div class="table-container">
-                  <div class="table-scroll">
+              <div class="table-container spin-in ">
+                  <div class="table-scroll spin-in ">
                     <table>
                       <thead>
                         <tr>
@@ -57,7 +57,7 @@
                             <td>{{admin.pseudo}}</td>
                             <td>{{admin.compagnie}}</td>
                             <td>
-                            <button (click)="supprimer(admin.id)">
+                            <button (click)="openDeleteModal(admin)">
                               <i class="fa-solid fa-trash btn_action_two"></i>
                             </button>
                           </td>
@@ -117,4 +117,16 @@
       </form>
     </div>
 </div>
-  
+
+<!-- Modal for deletion confirmation -->
+<div *ngIf="showDeleteModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeDeleteModal()">&times;</span>
+    <h2>Confirmer la suppression</h2>
+    <br>
+    <p>Voulez-vous vraiment supprimer cet aéroport ?</p>
+    <br>
+    <button (click)="confirmDelete()" class="modal_btn_del">Supprimer</button>
+    <button (click)="closeDeleteModal()" class="modal_btn_up">Annuler</button>
+  </div>
+</div>

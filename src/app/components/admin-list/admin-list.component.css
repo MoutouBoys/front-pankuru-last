@@ -3,6 +3,7 @@
     justify-content: space-between;
     padding: 20px;
 }
+
 /* title */
 .title_admin{
     display: flex;
@@ -11,7 +12,7 @@
     margin-top: 15px;
 }
 .conteneur{
-    background-color: white;
+    background-color: var(--white);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     padding: 10px;
@@ -24,6 +25,7 @@
     border-radius: 10px;
     margin-top: 15px;
     padding-top: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .table-scroll {
@@ -38,34 +40,33 @@
     width: 100%;
     overflow-x: auto;
   }
-  
+
   table {
     width: 100%;
     border-collapse: collapse;
   }
-  
+
   th, td {
     padding: 12px;
     text-align: center;
     border-bottom: 1px solid #ddd;
   }
-  
+
   tbody button{
     border: none;
     background-color: transparent;
   }
 
   th {
-    background-color: #f4f4f4;
-    background-color: rgb(0, 217, 255);
+    background-color: var(--blue-pers);
     color: white;
   }
   tbody tr{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   .ajout_btn{
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: rgb(172, 243, 255);
@@ -78,7 +79,7 @@
     color: black;
   }
   .ajout_btn a{
-    text-decoration: none; 
+    text-decoration: none;
     color: black;
     font-size: 12px;
   }
@@ -135,7 +136,7 @@
     color: white;
   }
 
-    
+
 /* Modal styles */
 .modal {
   display: flex;
@@ -209,4 +210,57 @@
   background-color: #04BBC7;
   color: white;
   cursor: pointer;
+}
+
+
+.content-all{
+  width: 78%;
+  }
+  @media (max-width: 900px){
+  .body{
+      /* margin-left: 10px; */
+      padding: 20px 0px 0px 0px;
+  }
+  .content-all{
+    width: 83%;
+    }
+  }
+/* Animation */
+  .spin-in {
+    opacity: 0;
+    transform: rotate(-360deg);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.spin-in-visible {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+/* Modal de confirmation de suppression*/
+.modal .modal_btn_del, .modal .modal_btn_up{
+  width: 90px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  font-weight: 600;
+  transition: .5s background-color, color;
+  cursor: pointer;
+}
+.modal .modal_btn_del{
+  background-color: var(--red);
+}
+.modal .modal_btn_up{
+  background-color: var(--blue-pers);
+  margin-left: 10px;
+}
+
+.modal .modal_btn_del:hover{
+  background-color: rgb(170, 10, 10);
+  color: var(--white);
+}
+.modal .modal_btn_up:hover{
+  background-color: #05747c;
+  margin-left: 10px;
+  color: var(--white);
 }

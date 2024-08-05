@@ -5,6 +5,7 @@ import { RechercheComponent } from '../../recherche/recherche.component';
 import { SuperAdminService } from '../../../service/super_admins/super-admin.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-formulaire-super-admin',
@@ -14,11 +15,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './formulaire-super-admin.component.css'
 })
 export class FormulaireSuperAdminComponent implements OnInit {
-  
-  public superadmin: any;
-  public nouveauSuperAdmin: any = { nom: '', prenom: '', email: '', password: '', numeroDeTelephone:'', pseudo: ''};
 
-  constructor(private superadminservice: SuperAdminService, private router: Router) {}
+  public superadmin: any;
+  public nouveauSuperAdmin: any = { nom: '', prenom: '', email: '', password: '', numeroDeTelephone:'', pseudo: '', adresse:''};
+
+  constructor(private superadminservice: SuperAdminService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.afficher();
@@ -41,10 +42,13 @@ export class FormulaireSuperAdminComponent implements OnInit {
     this.superadminservice.postSuperAdmin(this.nouveauSuperAdmin).subscribe({
       next: (response) => {
         console.log("SuperAdmin ajouté avec succès", response);
-        this.nouveauSuperAdmin = { nom: '', prenom: '', email: '', password: '', numeroDeTelephone:'', pseudo: ''}; // Réinitialiser le formulaire
+        this.nouveauSuperAdmin = { nom: '', prenom: '', email: '', password: '', numeroDeTelephone:'', pseudo: '', adresse:''}; // Réinitialiser le formulaire
+        this.toastr.success("Super admin ajouté avec succès", "Success");
         this.afficher(); // Mettre à jour la liste des superadmin après ajout
+        this.router.navigate(["/superadmin"]);
       },
       error: (err) => {
+        this.toastr.error("Erreur lors de l'ajout du super admin", "Fermer");
         console.error("Erreur lors de l'ajout du super admin: ", err);
       }
     });

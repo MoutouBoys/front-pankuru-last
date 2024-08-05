@@ -19,11 +19,12 @@ export class ListFagComponent implements OnInit {
   ajouterImage: string = "assets/images/Ajouter.png";
   net: string = "assets/images/net.png";
 
-  
+
   public faqs: any;
   public showModal: boolean = false;
   public selectedFaq: any = {};
-
+  public showDeleteModal: boolean = false;
+  public faqToDelete: any = {};
   constructor(private Faqservice: FaqService, private router: Router) {}
 
   ngOnInit(): void {
@@ -47,14 +48,25 @@ export class ListFagComponent implements OnInit {
     this.router.navigate(['/formulairefaq']);
   }
 
-  supprimer(id: number): void {
-    this.Faqservice.deleteFag(id).subscribe({
+
+  openDeleteModal(aeroport: any): void {
+    this.faqToDelete = aeroport;
+    this.showDeleteModal = true;
+  }
+
+  closeDeleteModal(): void {
+    this.showDeleteModal = false;
+  }
+
+  confirmDelete(): void {
+    this.Faqservice.deleteFag(this.faqToDelete.id).subscribe({
       next: (response) => {
-        console.log("faq supprimé avec succès", response);
-        this.afficher(); // Mettre à jour la liste des Faqs après suppression
+        console.log("Faq supprimé avec succès", response);
+        this.afficher(); // Mettre à jour la liste des aéroports après suppression
+        this.closeDeleteModal();
       },
       error: (err) => {
-        console.error("Erreur lors de la suppression de l'faq: ", err);
+        console.error("Erreur lors de la suppression du faq: ", err);
       }
     });
   }

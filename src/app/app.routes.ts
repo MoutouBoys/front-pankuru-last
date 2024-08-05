@@ -52,7 +52,7 @@ export const routes: Routes = [
     {path:"formulaireReponsesFaq",title:"formulaireReponsesFaq",component:FormulaireReponsesFaqComponent, canActivate:[AuthGuardService]},
     {path:"formulaireSiege",title:"formulaireSege",component:FormulaireSiegeComponent, canActivate:[AuthGuardService]},
     {path:"formulaireAvion",title:"formulaireAvion",component:FormulaireAvionComponent, canActivate:[AuthGuardService]},
-    { path: 'formulaireAvion', component: FormulaireAvionComponent, canActivate:[AuthGuardService]},
-    { path: 'formulaireAvion', component: FormulaireAvionComponent, canActivate:[AuthGuardService]},
-    { path: 'fistFagComponent', component: ListFagComponent, canActivate:[AuthGuardService]}
+    {path:'formulaireAvion',title:"formulaireAvion", component: FormulaireAvionComponent, canActivate:[AuthGuardService]},
+    {path:'formulaireAvion',title:"formulaireAvion", component: FormulaireAvionComponent, canActivate:[AuthGuardService]},
+    {path:'fistFagComponent',title:"formulaireAvion", component: ListFagComponent, canActivate:[AuthGuardService]}
 ];

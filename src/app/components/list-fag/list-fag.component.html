@@ -36,23 +36,23 @@
                     <table>
                       <thead>
                         <tr>
-                          <th>Id</th>
+                          <!-- <th>Id</th> -->
                           <th>Catégorie question</th>
                           <th>Response</th>
                           <th>Id compagnie</th>
                           <th>Supprimer</th>
                           <th>Modifier</th>
-            
+
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let faq of faqs">
-                          <td>{{faq.id}}</td>
+                          <!-- <td>{{faq.id}}</td> -->
                           <td>{{faq.questionCategorie}}</td>
                           <td>{{faq.reponse}}</td>
                           <td>{{faq.compagnie}}</td>
                           <td>
-                            <button (click)="supprimer(faq.id)">
+                            <button (click)="openDeleteModal(faq)">
                               <i class="fa-solid fa-trash btn_action_two"></i>
                             </button>
                           </td>
@@ -67,7 +67,7 @@
                   </div>
               </div>
           </div>
-          
+
           <!-- Modal for editing -->
           <div *ngIf="showModal" class="modal">
             <div class="modal-content">
@@ -94,6 +94,19 @@
                 <button type="submit">Enregistrer</button>
               </form>
             </div>
-          </div>          
+          </div>
     </div>
+</div>
+
+<!-- Modal for deletion confirmation -->
+<div *ngIf="showDeleteModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeDeleteModal()">&times;</span>
+    <h2>Confirmer la suppression</h2>
+    <br>
+    <p>Voulez-vous vraiment supprimer cet aéroport ?</p>
+    <br>
+    <button (click)="confirmDelete()" class="modal_btn_del">Supprimer</button>
+    <button (click)="closeDeleteModal()" class="modal_btn_up">Annuler</button>
+  </div>
 </div>

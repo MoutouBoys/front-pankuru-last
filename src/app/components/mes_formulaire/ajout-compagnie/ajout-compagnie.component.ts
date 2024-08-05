@@ -5,11 +5,13 @@ import { RechercheComponent } from '../../recherche/recherche.component';
 import { CompagnieService } from '../../../service/compagnies/compagnie.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-ajout-compagnie',
   standalone: true,
-  imports: [NgOptimizedImage, NavBarComponent, RechercheComponent, NgFor, NgIf, FormsModule],
+  imports: [NgOptimizedImage, NavBarComponent, RechercheComponent, NgFor, NgIf, FormsModule, BrowserAnimationsModule],
   templateUrl: './ajout-compagnie.component.html',
   styleUrl: './ajout-compagnie.component.css'
 })
@@ -18,12 +20,14 @@ export class AjoutCompagnieComponent  implements OnInit {
   faq_icon: string= "assets/images/faq 1.png";
   mask: string= "assets/images/Mask.png";
   maison: string= "assets/images/maison.png";
-  
+
   public compagnie: any;
-  public nouveauCompagnie: any = { nom: '', codeIATA: '', logo: '', email: '', siteWeb: '', numeroLicence: '', numeroTelephone: '', 
+  public nouveauCompagnie: any = { nom: '', codeIATA: '', logo: '', email: '', siteWeb: '', numeroLicence: '', numeroTelephone: '',
     codeICAO: '', matricule: '' };
 
-  constructor(private compagnieService: CompagnieService, private router: Router) {}
+  constructor(private compagnieService: CompagnieService, private router: Router,
+private toastr:ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.afficher();
@@ -46,10 +50,13 @@ export class AjoutCompagnieComponent  implements OnInit {
     this.compagnieService.postCompagnie(this.nouveauCompagnie).subscribe({
       next: (response) => {
         console.log("Avion ajouté avec succès", response);
+        this.toastr.success("Compagnie ajouté avec succès", "Success");
         this.nouveauCompagnie = { nom: '', codeIATA: '', longitude: '', latitude: '', altitude: '', capaciteParking: '', nombreDePistes: ''}; // Réinitialiser le formulaire
         this.afficher(); // Mettre à jour la liste des compagnie après ajout
+        this.router.navigate(["/compagnie"]);
       },
       error: (err) => {
+        this.toastr.error("Erreur lors de l'ajout de la compagnie", "Fermer");
         console.error("Erreur lors de l'ajout de l'avion: ", err);
       }
     });

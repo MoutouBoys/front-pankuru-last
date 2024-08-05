@@ -10,6 +10,7 @@ export class AuthServiceService {
   private BASE_URL = 'http://localhost:8080';
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
+  private currentPassword: string | null = null; // Ajout d'une variable pour stocker le mot de passe
 
   constructor(private http: HttpClient, private router: Router) {
     const storedUser = this.isBrowser() ? localStorage.getItem('currentUser') : null;
@@ -23,20 +24,17 @@ export class AuthServiceService {
 
   public get currentUserValue() {
     return this.currentUserSubject.value;
-
   }
 
-
-  login(username: String, password: String){
+  login(username: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.BASE_URL}/personne/connexion`, { username, password })
       .pipe(
         map(user => {
           if (user && user.token && this.isBrowser()) {
             localStorage.setItem('currentUser', JSON.stringify(user));
             this.currentUserSubject.next(user);
-
+            this.currentPassword = password; // Stocker le mot de passe
           }
-
           return user;
         }),
         catchError(this.handleError)
@@ -60,6 +58,7 @@ export class AuthServiceService {
       localStorage.removeItem('currentUser');
     }
     this.currentUserSubject.next(null);
+    this.currentPassword = null; // Réinitialiser le mot de passe
     this.router.navigate(['/connexion']);
   }
 
@@ -67,4 +66,14 @@ export class AuthServiceService {
     return this.currentUserValue && this.currentUserValue.role && this.currentUserValue.role === role;
   }
 
+  getUsername(): string | null {
+    let user = this.currentUserSubject.value;
+    console.log("===========================================" + user.email);
+    return user ? user.email : null;
+  }
+
+  getPassword(): string | null {
+    console.log("===========================================" + this.currentPassword);
+    return this.currentPassword; // Retourner le mot de passe stocké
+  }
 }

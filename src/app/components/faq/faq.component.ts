@@ -23,13 +23,13 @@ export class FaqComponent implements OnInit{
 
   public faq: any;
   public nouveauFaq: any={questionCategorie: "",  reponse:""};
-  
+
   constructor(private faqService: FaqService, router: Router){}
-  
+
     ngOnInit(): void {
       this.afficher();
     }
-  
+
   afficher(): void{
     this.faqService.getFaq().subscribe({
       next: (data)=>{
@@ -55,4 +55,25 @@ export class FaqComponent implements OnInit{
       }
     });
   }
-}
+    ngAfterViewInit(): void {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('rotate-in-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      const elementsToAnimate = document.querySelectorAll('.rotate-in');
+      elementsToAnimate.forEach(element => {
+        observer.observe(element);
+      });
+    }
+  }

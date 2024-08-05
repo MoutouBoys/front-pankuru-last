@@ -6,13 +6,14 @@
     background-color: white;
     overflow-y: scroll;
 }
+
 .body_page::-webkit-scrollbar{
     display: none;
 }
 .body_page h1 {
     text-align: center;
 }
-.statistique h3 {
+.statistique h3 a{
     margin-left: 15px;
 }
 .conteneur-one, .conteneur-two{
@@ -33,3 +34,24 @@
     justify-content: space-around;
     padding-top: 20px;
 }
+
+@media (max-width: 900px){
+.statistique-content{
+display: block;
+}
+.conteneur-two{
+margin-top: 20px;
+}
+}
+/* Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+

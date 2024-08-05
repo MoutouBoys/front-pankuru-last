@@ -14,3 +14,15 @@ body {
 body::-webkit-scrollbar{
     display: none;
 }
+:root {
+  --primary-blue: #007BFF;
+  --dark-blue: #0056B3;
+  --white: #FFFFFF;
+  --dark-gray: #6C757D;
+  --light-gray: #f4f6f8;
+  --black-night: #000000;
+  --green: #28A745;
+  --orange: #FFC107;
+  --red: #df0319;
+  --blue-pers:#04BBC7;
+}

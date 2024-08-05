@@ -1,19 +1,19 @@
 <div class="body_page">
     <app-nav-bar></app-nav-bar>
 
-    <div style="width: 78%;">
-        <app-recherche></app-recherche>
+    <div class="content-all">
+        <app-recherche class="rotate-in"></app-recherche>
         <br>
-        <form class="content_fag_code" (ngSubmit)="ajouter()">
-            <div class="flex-btn-list">
-                <div class="title-container">
-                    <h1>FAQ</h1>
+        <form class="content_fag_code rotate-in" (ngSubmit)="ajouter()">
+            <div class="flex-btn-list rotate-in">
+                <div class="title-container rotate-in">
+                    <h1 class="rotate-in">FAQ</h1>
                     <img [ngSrc]="faq_icon" alt="faq_icon" width="30" height="30">
                 </div>
                 <a routerLink="/fistFagComponent">Liste des Faqs</a>
             </div>
-            <div class="form_img_flex">
-                <div class="container-left">
+            <div class="form_img_flex rotate-in">
+                <div class="container-left rotate-in">
                     <h1>Formulaire</h1>
                     <br>
                     <div>

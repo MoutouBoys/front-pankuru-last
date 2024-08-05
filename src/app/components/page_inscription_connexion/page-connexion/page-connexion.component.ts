@@ -1,28 +1,24 @@
 import { NgFor, NgIf, NgOptimizedImage } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthServiceService } from '../../../service/auth_service/auth-service.service';
 import { ToastrService } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-page-connexion',
   standalone: true,
-  imports: [NgOptimizedImage, FormsModule, FormsModule, NgFor, NgIf],
+  imports: [NgOptimizedImage, FormsModule, NgFor, NgIf],
   templateUrl: './page-connexion.component.html',
-  styleUrl: './page-connexion.component.css',
+  styleUrls: ['./page-connexion.component.css'],
 })
-export class PageConnexionComponent implements OnInit{
-
-  /* credentials =
-     { };*/
-  username: String = '';
-  password: String = '';
+export class PageConnexionComponent implements OnInit {
+  username: string = ''; // Utiliser le type primitif string
+  password: string = ''; // Utiliser le type primitif string
   isConnected: boolean = false;
 
   ngOnInit(): void {
-    this.isConnected = !localStorage.getItem('currentUser');
+    this.isConnected = !!localStorage.getItem('currentUser'); // Correction de la logique de connexion
   }
 
   message = '';
@@ -31,27 +27,24 @@ export class PageConnexionComponent implements OnInit{
     private authService: AuthServiceService,
     private router: Router,
     private toastr: ToastrService,
-  ){}
+  ) {}
 
   login() {
     this.authService.login(this.username, this.password).subscribe(response => {
       localStorage.setItem("currentUser", JSON.stringify(response));
       this.router.navigate(['/accueil']);
-      this.toastr.success("Connection reussi avec succéss", "Success")
+      this.toastr.success("Connexion réussie avec succès", "Success");
       this.username = '';
-      this.password = '' ;
-
+      this.password = '';
     }, error => {
-      this.toastr.error("Username ou MotDePasse incorrect")
-
+      this.toastr.error("Nom d'utilisateur ou mot de passe incorrect");
       this.message = 'Invalid username or password';
       this.username = '';
-      this.password = '' ;
+      this.password = '';
     });
   }
 
-
   logo1: string = "assets/images/logoToolbar.png";
-  person: string ="assets/images/person.png";
-  eyes: string ="assets/images/eye.png";
+  person: string = "assets/images/person.png";
+  eyes: string = "assets/images/eye.png";
 }

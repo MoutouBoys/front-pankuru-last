@@ -19,7 +19,7 @@
             <table>
                 <thead>
                   <tr>
-                    <th>ID</th>
+                    <!-- <th>ID</th> -->
                     <th>Numéro</th>
                     <th>Disponibilité</th>
                     <th>Position Siege</th>
@@ -30,15 +30,15 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let siege of sieges">
-                    <td>
+                    <!-- <td>
                       {{siege.id}}
-                    </td>
+                    </td> -->
                     <td>{{siege.numero}}</td>
                     <td>{{siege.disponibilite}}</td>
                     <td>{{siege.positionSiege}}</td>
                     <td>{{siege.passager}}</td>
                     <td>
-                      <button (click)="supprimer(siege.id)">
+                      <button (click)="openDeleteModal(siege)">
                         <i class="fa-solid fa-trash btn_action_two"></i>
                       </button>
                     </td>
@@ -86,4 +86,16 @@
       </form>
     </div>
 </div>
-  
+
+<!-- Modal for deletion confirmation -->
+<div *ngIf="showDeleteModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeDeleteModal()">&times;</span>
+    <h2>Confirmer la suppression</h2>
+    <br>
+    <p>Voulez-vous vraiment supprimer cet aéroport ?</p>
+    <br>
+    <button (click)="confirmDelete()" class="modal_btn_del">Supprimer</button>
+    <button (click)="closeDeleteModal()" class="modal_btn_up">Annuler</button>
+  </div>
+</div>

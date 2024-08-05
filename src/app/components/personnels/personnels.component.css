@@ -1,13 +1,36 @@
 .body_page{
-    background-color: rgb(172, 243, 255);
     border-radius: 10px;
     position: relative;
     overflow: hidden;
     display: flex;
     justify-content: space-between;
     padding: 20px 10px 20px 10px;
+width: 100%;
 }
 
 .categoris_list_pers{
     display: flex;
 }
+@media (max-width: 900px){
+  .body_page{
+      /* margin-left: 10px; */
+      padding: 20px 5px 0px 0px;
+  }
+.trois_conteneur{
+display: none;
+width: 80%;
+}
+
+}
+/* Cette concerne l'animation */
+.fade-in {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+

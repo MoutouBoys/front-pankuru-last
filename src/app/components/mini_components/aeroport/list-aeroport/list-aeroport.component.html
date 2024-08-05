@@ -19,7 +19,7 @@
       <table>
         <thead>
           <tr>
-            <th>id</th>
+            <!-- <th>id</th> -->
             <th>Nom</th>
             <th>Code IATA</th>
             <th>Longitude</th>
@@ -27,13 +27,13 @@
             <th>Altitude</th>
             <th>Capacité</th>
             <th>Nbre de pistes</th>
-            <th>Supprimer</th>
-            <th>Modifier</th>
+            <th>Action</th>
+            <!-- <th>Modifier</th> -->
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let aeroport of aeroports">
-            <td>{{aeroport.id}}</td>
+            <!-- <td>{{aeroport.id}}</td> -->
             <td>{{aeroport.nom}}</td>
             <td>{{aeroport.codeIATA}}</td>
             <td>{{aeroport.longitude}}</td>
@@ -41,13 +41,11 @@
             <td>{{aeroport.altitude}}</td>
             <td>{{aeroport.capaciteParking}}</td>
             <td>{{aeroport.nombreDePistes}}</td>
-            <td>
-              <button (click)="supprimer(aeroport.id)">
+            <td style="display: flex;">
+              <button (click)="openDeleteModal(aeroport)">
                 <i class="fa-solid fa-trash btn_action_two"></i>
               </button>
-            </td>
-            <td>
-              <button (click)="openModal(aeroport)">
+              <button (click)="openModal(aeroport)" style="margin-left: 5px;">
                 <i class="fa-solid fa-pen btn_action_one"></i>
               </button>
             </td>
@@ -103,5 +101,18 @@
       <br>
       <button type="submit">Enregistrer</button>
     </form>
+  </div>
+</div>
+
+<!-- Modal for deletion confirmation -->
+<div *ngIf="showDeleteModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeDeleteModal()">&times;</span>
+    <h2>Confirmer la suppression</h2>
+    <br>
+    <p>Voulez-vous vraiment supprimer cet aéroport ?</p>
+    <br>
+    <button (click)="confirmDelete()" class="modal_btn_del">Supprimer</button>
+    <button (click)="closeDeleteModal()" class="modal_btn_up">Annuler</button>
   </div>
 </div>

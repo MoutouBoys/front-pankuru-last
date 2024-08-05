@@ -1,6 +1,6 @@
 <div class="body_page">
   <div class="table-container">
-    <div style="display: flex;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
       <div class="ajout_btn">
         <img [ngSrc]="ajouterImage" alt="ajouter" width="20" height="20">
         <h6><a routerLink="/formulaireAvion">Ajouter Avion</a></h6>
@@ -24,8 +24,7 @@
             <th>Capacité totale</th>
             <th>Nom</th>
             <th>Statut</th>
-            <th>Supprimer</th>
-            <th>Modifier</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -36,11 +35,10 @@
             <td>{{ avion.nom }}</td>
             <td>{{ avion.statut }}</td>
             <td>
-              <button (click)="supprimer(avion.id)">
+              <button (click)="openDeleteModal(avion)">
                 <i class="fa-solid fa-trash btn_action_two"></i>
               </button>
-            </td>
-            <td>
+
               <button (click)="openModal(avion)">
                 <i class="fa-solid fa-pen btn_action_one"></i>
               </button>
@@ -82,5 +80,18 @@
       <br>
       <button type="submit">Enregistrer</button>
     </form>
+  </div>
+</div>
+
+<!-- Modal for deletion confirmation -->
+<div *ngIf="showDeleteModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeDeleteModal()">&times;</span>
+    <h2>Confirmer la suppression</h2>
+    <br>
+    <p>Voulez-vous vraiment supprimer cet aéroport ?</p>
+    <br>
+    <button (click)="confirmDelete()" class="modal_btn_del">Supprimer</button>
+    <button (click)="closeDeleteModal()" class="modal_btn_up">Annuler</button>
   </div>
 </div>
