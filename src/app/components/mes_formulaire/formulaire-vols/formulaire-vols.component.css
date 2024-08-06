@@ -96,7 +96,7 @@
   margin-top: 15px;
 }
 
-input {
+input, select {
   width: 400px;
   height: 25px;
   border-radius: 5px;

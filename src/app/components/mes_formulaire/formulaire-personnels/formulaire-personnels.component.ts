@@ -22,7 +22,7 @@ import { ToastrService } from 'ngx-toastr';
 export class FormulairePersonnelsComponent implements OnInit {
 
   public personnels: any;
-  public nouveauPersonnel: any = { nom: '', prenom: '', email: '', passwprd: '', numeroDeTelephone:'', poste: '', role:''};
+  public nouveauPersonnel: any = { nom: '', prenom: '', email: '', passwprd: '', numeroDeTelephone:'', poste: '', role:'', adresse:''};
 
   constructor(private personnelservice: PersonnelsService, private router: Router, private toastr: ToastrService) {}
 
@@ -51,7 +51,7 @@ export class FormulairePersonnelsComponent implements OnInit {
     this.personnelservice.postPersonnel(personnelToSend).subscribe({
       next: (response) => {
         console.log("Personnel ajouté avec succès", response);
-        this.nouveauPersonnel = { nom: '', prenom: '', email: '', passwprd: '', numeroDeTelephone:'', poste: '', role:''}; // Réinitialiser le formulaire
+        this.nouveauPersonnel = { nom: '', prenom: '', email: '', passwprd: '', numeroDeTelephone:'', poste: '', role:'', adresse:''}; // Réinitialiser le formulaire
         this.toastr.success("Personnel ajouté avec succès", "Success");
         this.afficher(); // Mettre à jour la liste des personnels après ajout
         this.router.navigate(["/personnel"]);

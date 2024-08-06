@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavBarComponent } from '../../nav-bar/nav-bar.component';
 import { RechercheComponent } from '../../recherche/recherche.component';
 import { CompagnieService } from '../../../service/compagnies/compagnie.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @Component({
   selector: 'app-ajout-compagnie',
   standalone: true,
-  imports: [NgOptimizedImage, NavBarComponent, RechercheComponent, NgFor, NgIf, FormsModule, BrowserAnimationsModule],
+  imports: [NgOptimizedImage, NavBarComponent, RechercheComponent, NgFor, NgIf, FormsModule],
   templateUrl: './ajout-compagnie.component.html',
   styleUrl: './ajout-compagnie.component.css'
 })

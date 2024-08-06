@@ -28,8 +28,11 @@
     padding: 12px;
     text-align: center;
     border-bottom: 1px solid #ddd;
+    cursor: pointer;
   }
-
+  tbody tr:hover{
+  background-color: rgb(229, 241, 243);
+  }
   tbody button{
     border: none;
     background-color: transparent;
@@ -41,6 +44,7 @@
   }
   tbody tr{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: .5s background-color;
   }
   .ajout_btn{
     display: flex;
@@ -227,8 +231,10 @@
 
 .showPassagerModal{
 background-color: white;
-padding: 20px;
 }
 .modal-content-full{
 background-color:white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

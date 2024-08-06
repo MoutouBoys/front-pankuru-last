@@ -73,9 +73,13 @@
                     </optgroup>
                     </select>
                   </div>
-                  <div class="btn_enregistrement">
-                    <button type="submit">Enregistrer</button>
-                  </div>
+                  <div>
+                    <h3>Adresse</h3>
+                    <input type="text" [(ngModel)]="nouveauPersonnel.adresse" name="adresse" required>
+                </div>
+                </div>
+                <div class="btn_enregistrement">
+                  <button type="submit">Enregistrer</button>
                 </div>
             </div>
         </form>

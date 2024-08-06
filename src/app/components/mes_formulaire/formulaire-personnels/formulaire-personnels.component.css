@@ -86,7 +86,7 @@ position: relative;
     justify-content: space-around;
 }
 .margin-top-div{
-    margin-top: 25px;
+    margin-top: 10px;
 }
 input, select{
     width: 300Px;
@@ -159,4 +159,10 @@ height: 380px;
 display: block;
 
     }
+.btn_enregistrement button{
+padding: 5px 10px 5px 10px;
+}
+.btn_enregistrement{
+margin-top: 5px;
+}
 }

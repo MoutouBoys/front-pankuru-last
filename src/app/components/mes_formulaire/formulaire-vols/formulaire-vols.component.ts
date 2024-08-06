@@ -40,6 +40,10 @@ export class FormulaireVolsComponent implements OnInit {
   }
 
   ajouter(): void {
+    const volToSend = {
+      ...this.nouveauvol,
+      satut: { id: this.nouveauvol.satut}
+    };
     this.volService.postVol(this.nouveauvol).subscribe({
       next: (response) => {
         console.log("vol ajouté avec succès", response);

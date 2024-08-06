@@ -15,7 +15,6 @@ import { RechercheComponent } from '../recherche/recherche.component';
   styleUrl: './siege.component.css'
 })
 export class SiegeComponent  implements AfterViewInit {
-
   ngAfterViewInit(): void {
     const observerOptions = {
       root: null,

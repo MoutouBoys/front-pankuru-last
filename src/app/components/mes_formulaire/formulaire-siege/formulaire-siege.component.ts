@@ -15,10 +15,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './formulaire-siege.component.css'
 })
 export class FormulaireSiegeComponent   implements OnInit {
-
-  faq: string= "assets/images/faq.svg";
-  faq_icon: string= "assets/images/faq 1.png";
-    ajouterImage: string = "assets/images/Ajouter.png";
+  siege: String= "assets/images/siege.jpg";
 
     public sieges: any;
     public sieg!:{numero:string;disponibilite:boolean;positionSiege:string}

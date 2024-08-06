@@ -1,4 +1,4 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser, NgFor, NgIf } from '@angular/common';
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -7,16 +7,16 @@ import { AuthServiceService } from '../../service/auth_service/auth-service.serv
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, CommonModule  ],
+  imports: [RouterOutlet, RouterLink, CommonModule, NgFor, NgIf],
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
   logo1: string = "assets/images/logoToolbar.png";
   selectedNavItem: string = 'accueil'; // Par défaut, l'accueil est sélectionné
-
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
+  public role: string = '';
 
   constructor(private authService: AuthServiceService, private router: Router, @Inject(PLATFORM_ID) private platformId: any) {
     if (isPlatformBrowser(this.platformId)) {
@@ -28,6 +28,9 @@ export class NavBarComponent {
     const storedUser = this.isBrowser() ? localStorage.getItem('currentUser') : null;
     this.currentUserSubject = new BehaviorSubject<any>(storedUser ? JSON.parse(storedUser) : null);
     this.currentUser = this.currentUserSubject.asObservable();
+
+    // Obtenir le rôle de l'utilisateur
+    this.role = this.getRole();
   }
 
   private isBrowser(): boolean {
@@ -36,12 +39,18 @@ export class NavBarComponent {
 
   public get currentUserValue() {
     return this.currentUserSubject.value;
-
   }
 
   getUsername(): string | null {
     let user = this.currentUserSubject.value;
     return user ? user.Nom + ' ' + user.Prenom : null;
+  }
+
+  getRole(): string {
+    let user = this.currentUserSubject.value;
+console.log(user.role);
+    return user ? user.role : null;
+
   }
 
   logout() {
@@ -51,7 +60,6 @@ export class NavBarComponent {
     this.currentUserSubject.next(null);
     this.router.navigate(['/connexion']);
   }
-
 
   selectItem(item: string) {
     this.selectedNavItem = item;
