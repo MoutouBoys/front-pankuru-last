@@ -6,28 +6,24 @@ import { CompagnieService } from '../../../service/compagnies/compagnie.service'
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-ajout-compagnie',
   standalone: true,
   imports: [NgOptimizedImage, NavBarComponent, RechercheComponent, NgFor, NgIf, FormsModule],
   templateUrl: './ajout-compagnie.component.html',
-  styleUrl: './ajout-compagnie.component.css'
+  styleUrls: ['./ajout-compagnie.component.css']
 })
-export class AjoutCompagnieComponent  implements OnInit {
-  faq: string= "assets/images/faq.svg";
-  faq_icon: string= "assets/images/faq 1.png";
-  mask: string= "assets/images/Mask.png";
-  maison: string= "assets/images/maison.png";
+export class AjoutCompagnieComponent implements OnInit {
+  faq: string = "assets/images/faq.svg";
+  faq_icon: string = "assets/images/faq 1.png";
+  mask: string = "assets/images/Mask.png";
+  maison: string = "assets/images/maison.png";
 
-  public compagnie: any;
-  public nouveauCompagnie: any = { nom: '', codeIATA: '', logo: '', email: '', siteWeb: '', numeroLicence: '', numeroTelephone: '',
-    codeICAO: '', matricule: '' };
+  public compagnie: any[] = [];
+  public nouveauCompagnie: any = { nom: '', codeIATA: '', logoUrl: '', email: '', siteWeb: '', numeroLicence: '', numeroTelephone: '', codeICAO: '', matricule: '' };
 
-  constructor(private compagnieService: CompagnieService, private router: Router,
-private toastr:ToastrService
-  ) {}
+  constructor(private compagnieService: CompagnieService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.afficher();
@@ -36,12 +32,10 @@ private toastr:ToastrService
   afficher(): void {
     this.compagnieService.getCompagnie().subscribe({
       next: (data) => {
-        console.log(data);
         this.compagnie = data;
-        console.log("compagnie: " + this.compagnie);
       },
       error: (err) => {
-        console.error("Erreur lors de la récupération des compagnie: ", err);
+        console.error("Erreur lors de la récupération des compagnies: ", err);
       }
     });
   }
@@ -49,15 +43,14 @@ private toastr:ToastrService
   ajouter(): void {
     this.compagnieService.postCompagnie(this.nouveauCompagnie).subscribe({
       next: (response) => {
-        console.log("Avion ajouté avec succès", response);
-        this.toastr.success("Compagnie ajouté avec succès", "Success");
-        this.nouveauCompagnie = { nom: '', codeIATA: '', longitude: '', latitude: '', altitude: '', capaciteParking: '', nombreDePistes: ''}; // Réinitialiser le formulaire
-        this.afficher(); // Mettre à jour la liste des compagnie après ajout
+        this.nouveauCompagnie = { nom: '', codeIATA: '', logoUrl: '', email: '', siteWeb: '', numeroLicence: '', numeroTelephone: '', codeICAO: '', matricule: '' };
+        this.afficher();
         this.router.navigate(["/compagnie"]);
+        this.toastr.success("Compagnie ajoutée avec succès", "Success");
       },
       error: (err) => {
+        console.error("Erreur lors de l'ajout de la compagnie: ", err);
         this.toastr.error("Erreur lors de l'ajout de la compagnie", "Fermer");
-        console.error("Erreur lors de l'ajout de l'avion: ", err);
       }
     });
   }

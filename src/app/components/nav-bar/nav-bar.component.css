@@ -9,6 +9,13 @@
     overflow-y: scroll;
     position: relative;
 }
+.nav_bar-bottom{
+position: absolute;
+bottom: 0px;
+}
+#nav_link_last_a{
+color: red;
+}
 .app-nav-bar::-webkit-scrollbar{
     display: none;
 }
@@ -34,6 +41,7 @@ img{
     align-items: center;
     padding: 10px 50px;
     cursor: pointer;
+width: 100%;
 }
 
 .nav_link:hover {

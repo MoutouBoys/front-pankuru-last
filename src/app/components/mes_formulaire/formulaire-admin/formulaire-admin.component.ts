@@ -45,9 +45,9 @@ export class FormulaireAdminComponent implements OnInit {
       next: (response) => {
         console.log("Admin ajouté avec succès", response);
         this.nouveauAdmin = { nom: '', prenom: '', email: '', password: '', numeroDeTelephone:'', pseudo: '', compagnie:'', adresse:''}; // Réinitialiser le formulaire
-        this.toastr.success("Admin ajouté avec succès", "Success");
         this.afficher(); // Mettre à jour la liste des admins après ajout
         this.router.navigate(["/admin"]);
+        this.toastr.success("Admin ajouté avec succès", "Success");
       },
       error: (err) => {
         this.toastr.error("Erreur lors de l'ajout de l'admin", "Fermer");

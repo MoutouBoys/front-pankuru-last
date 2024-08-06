@@ -51,13 +51,13 @@ export class FormulaireAeroportComponent implements OnInit {
       next: (response) => {
         console.log("Aéroport ajouté avec succès", response);
         this.nouveauAeroport = { nom: '', codeIATA: '', longitude: '', latitude: '', altitude: '', capaciteParking: '', nombreDePistes: '', ville: '' }; // Réinitialiser le formulaire
-        this.toastr.success("Aéroport ajouté avec succès", "Success");
         this.afficher(); // Mettre à jour la liste des aéroports après ajout
         this.router.navigate(['/aeroport']); // Rediriger vers la page de liste
+        this.toastr.success("Aéroport ajouté avec succès", "Success");
       },
       error: (err) => {
-        this.toastr.error("Erreur lors de l'ajout de l'aéroport", "Fermer");
         console.error("Erreur lors de l'ajout de l'aéroport: ", err);
+        this.toastr.error("Erreur lors de l'ajout de l'aéroport", "Fermer");
       }
     });
   }

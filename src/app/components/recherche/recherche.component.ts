@@ -34,6 +34,9 @@ export class RechercheComponent {
     let user = this.currentUserSubject.value;
     return user ? user.Nom + ' ' + user.Prenom : null;
   }
-
+  getRole(): string {
+    let user = this.currentUserSubject.value;
+    return user && user.role && Array.isArray(user.role) ? user.role[0] : '';
+  }
   passagers: string = "assets/images/Profil.png";
 }

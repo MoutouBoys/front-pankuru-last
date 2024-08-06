@@ -30,7 +30,7 @@
 }
 
 .table-scroll {
-  max-height: 210px; /* Ajustez la hauteur selon vos besoins */
+  max-height: 350px; /* Ajustez la hauteur selon vos besoins */
   overflow: scroll;
 }
 .table-scroll::-webkit-scrollbar{

@@ -48,13 +48,13 @@ export class FormulaireAvionComponent implements OnInit {
       next: (response) => {
         console.log("Avion ajouté avec succès", response);
         this.nouveauAvion = { nom: '', capaciteTotale: '', matricule: '', maintenance: '', adminCompagnie:'' }; // Réinitialiser le formulaire
-        this.toastr.success("Avion ajouté avec succès", "Success");
         this.afficher(); // Mettre à jour la liste des avions après ajout
         this.router.navigate(["/avion"]);
+        this.toastr.success("Avion ajouté avec succès", "Success");
       },
       error: (err) => {
-        this.toastr.error("Erreur lors de l'ajout d'avion", "Fermer");
         console.error("Erreur lors de l'ajout de l'avion: ", err);
+        this.toastr.error("Erreur lors de l'ajout d'avion", "Fermer");
       }
     });
   }

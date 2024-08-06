@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { FaqService } from '../../service/faqs/faq.service';
 import { Router, RouterLink } from '@angular/router';
 import { ListFagComponent } from '../list-fag/list-fag.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-faq',
@@ -24,7 +25,7 @@ export class FaqComponent implements OnInit{
   public faq: any;
   public nouveauFaq: any={questionCategorie: "",  reponse:""};
 
-  constructor(private faqService: FaqService, router: Router){}
+  constructor(private faqService: FaqService, private router: Router, private toastr: ToastrService){}
 
     ngOnInit(): void {
       this.afficher();
@@ -49,9 +50,12 @@ export class FaqComponent implements OnInit{
         console.log( "Faq ajouté avec succès : "+ response);
         this.nouveauFaq= {questionCategorie:"", reponse:""};
         this.afficher(); // Mettre à jour la liste des compagnie après ajout
+        this.router.navigate(["/faq"]);
+        this.toastr.success("Faq ajoutée avec succès", "Success");
       },
       error:(err)=>{
         console.log("Erreur lors de l'ajout d'une question(faq): " + err);
+        this.toastr.error("Erreur lors de l'ajout du faq", "Fermer");
       }
     });
   }

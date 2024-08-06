@@ -13,12 +13,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./page-connexion.component.css'],
 })
 export class PageConnexionComponent implements OnInit {
-  username: string = ''; // Utiliser le type primitif string
-  password: string = ''; // Utiliser le type primitif string
+  username: string = '';
+  password: string = '';
   isConnected: boolean = false;
 
   ngOnInit(): void {
-    this.isConnected = !!localStorage.getItem('currentUser'); // Correction de la logique de connexion
+    this.isConnected = !!localStorage.getItem('currentUser');
   }
 
   message = '';
@@ -32,6 +32,7 @@ export class PageConnexionComponent implements OnInit {
   login() {
     this.authService.login(this.username, this.password).subscribe(response => {
       localStorage.setItem("currentUser", JSON.stringify(response));
+      localStorage.setItem("role", response.role[0]); // Stocker le premier rôle
       this.router.navigate(['/accueil']);
       this.toastr.success("Connexion réussie avec succès", "Success");
       this.username = '';

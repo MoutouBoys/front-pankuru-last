@@ -6,6 +6,7 @@ import { Router, RouterLink } from '@angular/router';
 import { NgFor, NgIf, NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FaqComponent } from '../faq/faq.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-list-fag',
@@ -25,7 +26,7 @@ export class ListFagComponent implements OnInit {
   public selectedFaq: any = {};
   public showDeleteModal: boolean = false;
   public faqToDelete: any = {};
-  constructor(private Faqservice: FaqService, private router: Router) {}
+  constructor(private Faqservice: FaqService, private router: Router, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.afficher();
@@ -64,9 +65,11 @@ export class ListFagComponent implements OnInit {
         console.log("Faq supprimé avec succès", response);
         this.afficher(); // Mettre à jour la liste des aéroports après suppression
         this.closeDeleteModal();
+        this.toastr.success("Faq supprimer avec succès", "Success");
       },
       error: (err) => {
         console.error("Erreur lors de la suppression du faq: ", err);
+        this.toastr.error("Erreur lors de la suppression du faq", "Success");
       }
     });
   }

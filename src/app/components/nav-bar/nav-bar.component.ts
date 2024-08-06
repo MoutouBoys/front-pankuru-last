@@ -24,13 +24,14 @@ export class NavBarComponent {
       if (savedNavItem) {
         this.selectedNavItem = savedNavItem;
       }
+      const storedRole = localStorage.getItem('role'); // Récupérer le rôle depuis localStorage
+      if (storedRole) {
+        this.role = storedRole;
+      }
     }
     const storedUser = this.isBrowser() ? localStorage.getItem('currentUser') : null;
     this.currentUserSubject = new BehaviorSubject<any>(storedUser ? JSON.parse(storedUser) : null);
     this.currentUser = this.currentUserSubject.asObservable();
-
-    // Obtenir le rôle de l'utilisateur
-    this.role = this.getRole();
   }
 
   private isBrowser(): boolean {
@@ -48,14 +49,13 @@ export class NavBarComponent {
 
   getRole(): string {
     let user = this.currentUserSubject.value;
-console.log(user.role);
-    return user ? user.role : null;
-
+    return user && user.role && Array.isArray(user.role) ? user.role[0] : '';
   }
 
   logout() {
     if (this.isBrowser()) {
       localStorage.removeItem('currentUser');
+      localStorage.removeItem('role'); // Supprimer le rôle de l'utilisateur lors de la déconnexion
     }
     this.currentUserSubject.next(null);
     this.router.navigate(['/connexion']);

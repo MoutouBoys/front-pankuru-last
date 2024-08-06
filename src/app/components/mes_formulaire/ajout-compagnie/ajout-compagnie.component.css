@@ -7,7 +7,7 @@
 .content-all-form {
   background-color: var(--white);
   margin-top: 10px;
-  padding: 35px 20px 25px 20px;
+  padding: 0px 20px 15px 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -27,7 +27,7 @@
   align-items: center;
 }
 
-input {
+input, select {
   border-radius: 5px;
   width: 100%; /* Utiliser toute la largeur disponible */
   max-width: 300px; /* Limite maximale de largeur */

@@ -2,7 +2,7 @@
   <app-nav-bar></app-nav-bar>
   <div style="width: 78%;">
       <app-recherche></app-recherche>
-      <div class="titre-ajout-compagnie" routerLink="formulaireCompagnie">
+      <div class="titre-ajout-compagnie">
           <h1>Ajout d’une compagnie</h1>
           <img [ngSrc]="maison" alt="maison" width="40" height="30">
       </div>
@@ -18,7 +18,7 @@
                       <div class="container-left">
                         <div>
                             <h4>Logo</h4>
-                            <input type="file" [(ngModel)]="nouveauCompagnie.logo" name="logo" required>
+                            <input type="file" [(ngModel)]="nouveauCompagnie.logoUrl" name="logoUrl" required>
                         </div>
                         <br>
                           <div>
@@ -37,28 +37,28 @@
                           </div>
                           <div style="margin-top: 5px;">
                               <h4>code ICAO</h4>
-                              <input type="text" [(ngModel)]="nouveauCompagnie.codeICAO" name="codeIATA" required>
+                              <input type="text"  [(ngModel)]="nouveauCompagnie.codeICAO" name="codeIATA" required>
                           </div>
                       </div>
                       <div class="container-right">
                           <div>
                               <h4>Numero Telephone</h4>
-                              <input type="tel" [(ngModel)]="nouveauCompagnie.numeroTelephone" name="numeroTelephone" required>
+                              <input type="tel"  [(ngModel)]="nouveauCompagnie.numeroTelephone" name="numeroTelephone" required>
                           </div>
                           <br>
                           <div>
                               <h4>E-mail</h4>
-                              <input type="email" [(ngModel)]="nouveauCompagnie.email" name="email" required>
+                              <input type="email"  [(ngModel)]="nouveauCompagnie.email" name="email" required>
                           </div>
                           <br>
                           <div>
                               <h4>SiteWeb</h4>
-                              <input type="text" [(ngModel)]="nouveauCompagnie.siteWeb" name="siteWeb" required>
+                              <input type="text"  [(ngModel)]="nouveauCompagnie.siteWeb" name="siteWeb" required>
                           </div>
                           <br>
                           <div>
                               <h4>Numero Licence</h4>
-                              <input type="text" [(ngModel)]="nouveauCompagnie.numeroLicence" name="numeroLicence" required>
+                              <input type="text"  [(ngModel)]="nouveauCompagnie.numeroLicence" name="numeroLicence" required>
                           </div>
                           <button type="submit">Envoyer</button>
                       </div>
