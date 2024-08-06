@@ -38,4 +38,8 @@ export class PassagersService {
     const headers = this.createAuthorizationHeader();
     return this.http.delete(`${this.baseUrl}/supprimer/${id}`, {headers});
   }
+  getPassagerByVol(volId: number): Observable<any> {
+    const headers = this.createAuthorizationHeader();
+    return this.http.get(`${this.baseUrl}/afficher/vol/${volId}`,{headers});
+  }
 }

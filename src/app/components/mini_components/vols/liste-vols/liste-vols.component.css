@@ -224,3 +224,11 @@
   margin-left: 10px;
   color: var(--white);
 }
+
+.showPassagerModal{
+background-color: white;
+padding: 20px;
+}
+.modal-content-full{
+background-color:white;
+}

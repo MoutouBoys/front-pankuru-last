@@ -1,69 +1,64 @@
 <div class="body_page">
   <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
     <div class="ajout_btn">
-      <img [ngSrc]="ajouterImage" alt="ajouer" width="20" height="20">
+      <img [ngSrc]="ajouterImage" alt="ajouter" width="20" height="20">
       <h6><a href="" routerLink="/formulaireVols"> Ajouter un nouveau vol</a></h6>
     </div>
-      <select name="" id="">
-        <optgroup>
-          <option value="Tous">Tous</option>
-          <option value="Tous">Pilotes</option>
-          <option value="Tous">Escortes</option>
-          <option value="Tous">Service de nettoyage</option>
-        </optgroup>
-      </select>
-      <input type="date">
+    <select name="" id="">
+      <optgroup>
+        <option value="Tous">Tous</option>
+        <option value="Pilotes">Pilotes</option>
+        <option value="Escortes">Escortes</option>
+        <option value="Service de nettoyage">Service de nettoyage</option>
+      </optgroup>
+    </select>
+    <input type="date">
   </div>
-    <div class="table-container">
-        <div class="table-scroll">
-          <table>
-            <thead>
-              <tr>
-                <!-- <th>Id</th> -->
-                <th>NumeroDeVol</th>
-                <th>AéroportDepart</th>
-                <th>aeroportDArrivee</th>
-                <th>DateEtHeureArrivee</th>
-                <th>DateEtHeureDepart</th>
-                <th>Satut</th>
-                <th>Action</th>
-                <!-- <th>Modifier</th> -->
-
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let vol of vols">
-                <!-- <td>{{vol.id}}</td> -->
-                <td>{{vol.numeroDeVol}}</td>
-                <td>{{vol.aeroportDepart}}</td>
-                <td>{{vol.aeroportDArrivee}}</td>
-                <td>{{vol.dateEtHeureDepart}}</td>
-                <td>{{vol.dateEtHeureArrivee}}</td>
-                <td>{{vol.satut}}</td>
-                <td style="display: flex;">
-                  <button (click)="openDeleteModal(vol)">
-                    <i class="fa-solid fa-trash btn_action_two"></i>
-                  </button>
-                <!-- </td>
-                <td> -->
-                  <button (click)="openModal(vol)">
-                    <i class="fa-solid fa-pen vol btn_action_one"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <div class="table-container">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>NumeroDeVol</th>
+            <th>AéroportDepart</th>
+            <th>aeroportDArrivee</th>
+            <th>DateEtHeureArrivee</th>
+            <th>DateEtHeureDepart</th>
+            <th>Satut</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vol of vols" (click)="openPassagerModal(vol)">
+            <td>{{vol.numeroDeVol}}</td>
+            <td>{{vol.aeroportDepart}}</td>
+            <td>{{vol.aeroportDArrivee}}</td>
+            <td>{{vol.dateEtHeureDepart}}</td>
+            <td>{{vol.dateEtHeureArrivee}}</td>
+            <td>{{vol.satut}}</td>
+            <td style="display: flex;">
+              <button (click)="openDeleteModal(vol); $event.stopPropagation()">
+                <i class="fa-solid fa-trash btn_action_two"></i>
+              </button>
+              <button (click)="openModal(vol); $event.stopPropagation()">
+                <i class="fa-solid fa-pen vol btn_action_one"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 
 <!-- Modal for editing -->
 <div *ngIf="showModal" class="modal">
   <div class="modal-content">
     <span class="close" (click)="closeModal()">&times;</span>
-    <h2>Modifier Aéroport</h2>
+    <h2>Modifier Vol</h2>
     <br>
     <form (ngSubmit)="onSubmit()" class="form_content">
+      <!-- Form fields for editing vol -->
       <div>
         <label for="numeroDeVol">NumeroDeVol:</label>
         <br>
@@ -106,9 +101,51 @@
     <span class="close" (click)="closeDeleteModal()">&times;</span>
     <h2>Confirmer la suppression</h2>
     <br>
-    <p>Voulez-vous vraiment supprimer cet aéroport ?</p>
+    <p>Voulez-vous vraiment supprimer ce vol ?</p>
     <br>
     <button (click)="confirmDelete()" class="modal_btn_del">Supprimer</button>
     <button (click)="closeDeleteModal()" class="modal_btn_up">Annuler</button>
+  </div>
+</div>
+
+<!-- Modal for displaying passengers -->
+<div *ngIf="showPassagerModal" class="modal">
+  <div class="modal-content-full">
+    <span class="close" (click)="closePassagerModal()">&times;</span>
+    <h2>Liste des passagers</h2>
+    <br>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>NumeroDePasseport</th>
+          <th>NumeroDeVisa</th>
+          <!-- <th>Siege</th>
+          <th>Reservation</th>
+          <th>Bagage</th> -->
+          <!-- <th>Action</th> -->
+          <!-- <th>Modifier</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let passager of passagers">
+          <td>{{passager.nom}}</td>
+          <td>{{passager.prenom}}</td>
+          <td>{{passager.numeroDePassPort}}</td>
+          <td>{{passager.numeroDeVisa}}</td>
+          <!-- <td>
+            <button (click)="openDeleteModal(passager)">
+              <i class="fa-solid fa-trash btn_action_two"></i>
+            </button>
+          </td>
+          <td>
+            <button (click)="openModal(passager)">
+              <i class="fa-solid fa-pen btn_action_one"></i>
+            </button>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
