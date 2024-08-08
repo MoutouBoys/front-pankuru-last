@@ -12,12 +12,8 @@ import { InactivityService } from './service/Inactivity/inactivity.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
 
-constructor(private inactivity: InactivityService){}
+constructor(){}
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-  title = 'reservation_billet';
 }

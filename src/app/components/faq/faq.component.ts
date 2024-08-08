@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-faq',
   standalone: true,
-  imports: [NgOptimizedImage, NavBarComponent, RechercheComponent, NgFor, NgIf, FormsModule, RouterLink,
+  imports: [NgOptimizedImage, NavBarComponent, RechercheComponent, NgFor, NgIf, FormsModule,
     ListFagComponent
   ],
   templateUrl: './faq.component.html',
@@ -50,8 +50,8 @@ export class FaqComponent implements OnInit{
         console.log( "Faq ajouté avec succès : "+ response);
         this.nouveauFaq= {questionCategorie:"", reponse:""};
         this.afficher(); // Mettre à jour la liste des compagnie après ajout
-        this.router.navigate(["/faq"]);
         this.toastr.success("Faq ajoutée avec succès", "Success");
+        this.router.navigate(["/fistFagComponent"]);
       },
       error:(err)=>{
         console.log("Erreur lors de l'ajout d'une question(faq): " + err);
